@@ -53,13 +53,13 @@ const HeroSection = ({ lang }: HeroProps) => {
           <img
             src={img1}
             // Mobile (sm) par width 95% aur height 50% rakhi hai taki text bahar na jaye
-            className="w-[95%] h-[60%] md:w-[90%] md:h-[80%] object-cover rounded-[3rem] md:rounded-[10rem] opacity-40 md:opacity-50"
+            className="w-[95%] h-[70%] md:w-[90%] md:h-[80%] object-cover rounded-[5rem] md:rounded-[10rem] opacity-40 md:opacity-50"
             alt="Background"
           />
         </motion.div>
 
-        <div className="relative z-10 text-center flex flex-col items-center px-2">
-          {/* Main Title: Mobile par 22vw se start kiya hai taki readable rahe */}
+        <div className="relative z-10 text-center flex flex-col mt-7 md:mt-0 items-center px-2">
+   
           <motion.h1
             initial={{ letterSpacing: "10px", opacity: 0 }}
             animate={{ letterSpacing: "-0.05em", opacity: 1 }}
@@ -69,7 +69,7 @@ const HeroSection = ({ lang }: HeroProps) => {
             {isHi ? "सार्थक" : "SARTHAK"}
           </motion.h1>
 
-          {/* Subtitle: Mobile par font chota aur gap balance kiya hai */}
+
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
