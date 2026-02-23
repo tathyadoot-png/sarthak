@@ -15,6 +15,7 @@ import Gallery from "@/pages/gallery/Gallery";
 import Donate from "@/pages/donate/Donate";
 import Partner from "@/pages/partner/Partner";
 import About from "@/pages/about/About";
+import Initiatives from "@/pages/initiatives/Initiatives";
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/donate" element={<Donate />} />
           <Route path="/partner" element={<Partner />} />
           <Route path="/about" element={<About />} />
+           <Route path="/initiatives" element={<Initiatives />} />
 
         </Route>
 

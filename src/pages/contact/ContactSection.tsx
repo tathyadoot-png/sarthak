@@ -113,7 +113,7 @@ const ContactSection = () => {
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="lg:col-span-7 bg-[#1a1a1a] rounded-[4rem] p-10 md:p-16 text-white relative overflow-hidden shadow-2xl shadow-slate-900/20"
+            className="lg:col-span-7 bg-slate-950 rounded-[4rem] p-10 md:p-16 text-white relative overflow-hidden shadow-2xl shadow-slate-900/20"
           >
             <div className="relative z-10">
               <h4 className="text-3xl font-black italic mb-2">{isHi ? "संदेश भेजें" : "Send a Message"}</h4>
