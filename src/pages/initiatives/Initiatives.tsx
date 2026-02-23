@@ -1,165 +1,185 @@
-import React from 'react';
+"use client";
+
+import React from "react";
 import { motion } from "framer-motion";
-import { useOutletContext, Link } from "react-router-dom";
-import { Recycle, Zap, ShieldCheck, Waves, ArrowRight, ArrowUpRight } from "lucide-react";
-import SectionHeading from '@/components/ui/SectionHeading/SectionHeading';
+import { 
+  Recycle, 
+  Zap, 
+  Leaf, 
+  Users, 
+  ArrowRight, 
+  ShieldCheck, 
+  Globe, 
+  Factory 
+} from "lucide-react";
 
-const Initiatives = () => {
-  const { lang } = useOutletContext<{ lang: "hi" | "en" }>();
-  const isHi = lang === "hi";
+const initiatives = [
+  {
+    title: "Plastic Waste Management",
+    id: "plastic",
+    icon: <Recycle className="w-8 h-8 text-emerald-500" />,
+    image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&q=80", // Replace with actual site photo
+    description: "Pioneering the 'Bhopal Model' of plastic waste management through community-led collection and industrial partnerships.",
+    features: [
+      "Door-to-door collection & SHG operations",
+      "Partnerships with 10+ cement industries for safe disposal",
+      "Shredded MLP used in 40,000km+ of road construction",
+      "Sustainable PPP model with Municipal Corporations"
+    ],
+    color: "bg-emerald-50 border-emerald-100",
+    buttonColor: "bg-emerald-600 hover:bg-emerald-700"
+  },
+  {
+    title: "E-Waste Management",
+    id: "ewaste",
+    icon: <Zap className="w-8 h-8 text-blue-500" />,
+    image: "https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&q=80",
+    description: "Safely managing electronic waste through authorized collection and awareness to prevent toxic environmental leakage.",
+    features: [
+      "Authorized E-Waste collection centers",
+      "Dedicated 'E-Waste Ambulance' for city-wide pickup",
+      "Safe dismantling through certified partnerships",
+      "Citizen awareness campaigns on hazardous waste"
+    ],
+    color: "bg-blue-50 border-blue-100",
+    buttonColor: "bg-blue-600 hover:bg-blue-700"
+  },
+  {
+    title: "Organic Waste Solutions",
+    id: "organic",
+    icon: <Leaf className="w-8 h-8 text-green-500" />,
+    image: "https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&q=80",
+    description: "Transforming organic waste into wealth through decentralized processing and community composting.",
+    features: [
+      "Community-based composting systems",
+      "Biogas systems for renewable energy",
+      "Decentralized organic waste processing units",
+      "Creation of local markets for organic compost"
+    ],
+    color: "bg-green-50 border-green-100",
+    buttonColor: "bg-green-600 hover:bg-green-700"
+  },
+  {
+    title: "Social Inclusion & Livelihood",
+    id: "social",
+    icon: <Users className="w-8 h-8 text-amber-500" />,
+    image: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80",
+    description: "Empowering 19,000+ waste workers (Sarthak Karmis) by integrating them into the formal circular economy.",
+    features: [
+      "Professional capacity building & training",
+      "Healthcare and educational support for families",
+      "Financial inclusion through SHGs and banking",
+      "Dignity and social security for ragpicker communities"
+    ],
+    color: "bg-amber-50 border-amber-100",
+    buttonColor: "bg-amber-600 hover:bg-amber-700"
+  }
+];
 
-  const data = [
-    {
-      id: "plastic",
-      title: isHi ? "प्लास्टिक वेस्ट" : "Plastic Waste",
-      subtitle: "Material Recovery Facility",
-      desc: isHi 
-        ? "नगर निगमों के साथ मिलकर प्लास्टिक कचरे का वैज्ञानिक प्रबंधन और पुनर्चक्रण।" 
-        : "Scientific management and recycling of plastic waste in partnership with municipal bodies.",
-      icon: <Recycle size={28} />,
-      color: "bg-emerald-500",
-      image: "/assets/initiatives/plastic.jpg", // Replace with your image
-    },
-    {
-      id: "ewaste",
-      title: isHi ? "ई-वेस्ट" : "E-Waste",
-      subtitle: "Green Recycling",
-      desc: isHi 
-        ? "पुराने इलेक्ट्रॉनिक उपकरणों का सुरक्षित निपटान और कीमती धातुओं की रिकवरी।" 
-        : "Safe disposal of electronic waste and recovery of precious metals using green tech.",
-      icon: <Zap size={28} />,
-      color: "bg-blue-600",
-      image: "/assets/initiatives/ewaste.jpg",
-    },
-    {
-      id: "carcass",
-      title: isHi ? "मृत पशु प्रबंधन" : "Carcass Management",
-      subtitle: "Hygienic Disposal",
-      desc: isHi 
-        ? "शहरों में मृत पशुओं का गरिमापूर्ण और स्वच्छ वैज्ञानिक प्रबंधन।" 
-        : "Dignified and hygienic scientific management of animal carcasses in urban areas.",
-      icon: <ShieldCheck size={28} />,
-      color: "bg-amber-600",
-      image: "/assets/initiatives/carcass.jpg",
-    },
-    {
-      id: "narmada",
-      title: isHi ? "नर्मदा संरक्षण" : "Narmada River",
-      subtitle: "Water Conservation",
-      desc: isHi 
-        ? "पवित्र नर्मदा नदी के घाटों की सफाई और कचरा प्रबंधन के लिए विशेष पहल।" 
-        : "A dedicated initiative for the cleaning and waste management of Narmada river banks.",
-      icon: <Waves size={28} />,
-      color: "bg-cyan-600",
-      image: "/assets/initiatives/river.jpg",
-    }
-  ];
-
+const InitiativesPage = () => {
   return (
-    <div className="w-full bg-[#fcfcfd] pt-32 md:pt-48 pb-20 overflow-hidden">
-      <div className="w-full px-6 md:px-16 lg:px-24 xl:px-32">
-        
-        {/* 🔹 Dynamic Heading Section */}
-        <div className="mb-20">
-          <SectionHeading 
-            subtitle={isHi ? "हमारी पहल" : "Our Initiatives"}
-            titleMain={isHi ? "पर्यावरण" : "Action for"}
-            titleGradient={isHi ? "संरक्षण।" : "Change."}
-            isHi={isHi}
-          />
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-slate-500 text-lg md:text-xl font-medium max-w-2xl mt-6 leading-relaxed"
-          >
-            {isHi 
-              ? "हम समुदायों और सरकार के साथ मिलकर कचरे को संसाधन में बदलने का काम कर रहे हैं।" 
-              : "We work with communities and governments to transform waste into sustainable resources."}
-          </motion.p>
-        </div>
+    <div className="pt-24 pb-20 bg-white">
+      {/* 🔹 HERO SECTION */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-20 text-center">
+        <motion.span 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-[#00a651] font-black text-[12px] uppercase tracking-[0.3em] block mb-4"
+        >
+          Our Programs
+        </motion.span>
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-4xl md:text-6xl font-black text-[#1a1f5c] tracking-tight mb-6"
+        >
+          Solid Waste Management <br /> Programs in India
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-slate-500 text-lg max-w-3xl mx-auto leading-relaxed"
+        >
+          Since 1998, Sarthak has evolved as a leading agency in Madhya Pradesh, 
+          pioneering PPP models that turn waste into wealth while empowering marginalized communities.
+        </motion.p>
+      </section>
 
-        {/* 🔹 Initiatives List (Stack on Mobile, Grid on Desktop) */}
-        <div className="space-y-12 md:space-y-24">
-          {data.map((item, idx) => (
-            <motion.div 
-              key={item.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: idx * 0.1 }}
-              className={`flex flex-col ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 md:gap-20 items-center`}
-            >
-              
-              {/* Image Side */}
-              <div className="w-full lg:w-1/2 relative group">
-                <div className="relative aspect-[16/10] md:aspect-[16/9] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl">
-                  <img 
-                    src={item.image} 
-                    alt={item.title} 
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+      {/* 🔹 INITIATIVES GRID */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12 space-y-32">
+        {initiatives.map((item, index) => (
+          <motion.div 
+            key={item.id}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
+          >
+            {/* Image Side */}
+            <div className="w-full lg:w-1/2 relative">
+              <div className="aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl">
+                <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+              </div>
+              {/* Floating Stat or Info */}
+              <div className="absolute -bottom-6 -right-6 md:right-10 bg-white p-6 rounded-2xl shadow-xl border border-slate-50 hidden md:block max-w-[200px]">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 rounded-lg bg-emerald-50">{item.icon}</div>
                 </div>
-                
-                {/* Floating Icon */}
-                <div className={`absolute -top-6 -left-4 md:-left-8 h-16 w-16 md:h-20 md:w-20 ${item.color} rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center text-white shadow-2xl shadow-black/20 group-hover:rotate-12 transition-transform duration-500`}>
+                <p className="text-[10px] font-black text-[#1a1f5c] uppercase leading-tight">Proven Model for Scale</p>
+              </div>
+            </div>
+
+            {/* Content Side */}
+            <div className="w-full lg:w-1/2">
+              <div className="flex items-center gap-4 mb-6">
+                <div className={`p-4 rounded-2xl ${item.color} border`}>
                   {item.icon}
                 </div>
+                <h2 className="text-3xl font-black text-[#1a1f5c] uppercase tracking-tighter">{item.title}</h2>
               </div>
+              <p className="text-slate-600 text-lg mb-8 leading-relaxed">
+                {item.description}
+              </p>
+              
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+                {item.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3 group">
+                    <ShieldCheck className="w-5 h-5 text-[#00a651] mt-0.5 shrink-0" />
+                    <span className="text-sm font-bold text-slate-500 group-hover:text-slate-900 transition-colors">{feature}</span>
+                  </li>
+                ))}
+              </ul>
 
-              {/* Content Side */}
-              <div className="w-full lg:w-1/2 space-y-6 md:space-y-8 text-center lg:text-left">
-                <div className="space-y-3">
-                  <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-[#00a651]">
-                    {item.subtitle}
-                  </span>
-                  <h3 className="text-4xl md:text-6xl font-[1000] text-[#1a1f5c] tracking-tighter italic uppercase leading-tight">
-                    {item.title}
-                  </h3>
-                </div>
-
-                <p className="text-slate-500 text-base md:text-xl leading-relaxed font-medium">
-                  {item.desc}
-                </p>
-
-                <div className="pt-4 flex justify-center lg:justify-start">
-                  <Link 
-                    to={`/initiatives/${item.id}`}
-                    className="group/btn relative inline-flex items-center gap-4 px-8 py-4 bg-white border border-slate-200 rounded-full overflow-hidden transition-all duration-500 hover:border-[#1a1f5c] hover:shadow-xl"
-                  >
-                    <span className="relative z-10 font-black text-[11px] md:text-xs uppercase tracking-widest text-[#1a1f5c]">
-                      {isHi ? "विस्तार से देखें" : "Explore Project"}
-                    </span>
-                    <div className="relative z-10 h-8 w-8 rounded-full bg-[#1a1f5c] text-white flex items-center justify-center group-hover/btn:translate-x-1 transition-transform">
-                      <ArrowUpRight size={16} />
-                    </div>
-                  </Link>
-                </div>
-              </div>
-
-            </motion.div>
-          ))}
-        </div>
-
-      </div>
-
-      {/* 🔹 Bottom Section CTA */}
-      <div className="mt-40 px-6">
-        <div className="w-full bg-[#1a1f5c] rounded-[3rem] md:rounded-[5rem] p-12 md:p-24 text-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] -mr-48 -mt-48" />
-            <h4 className="text-white text-3xl md:text-6xl font-[1000] tracking-tighter leading-tight relative z-10">
-                {isHi ? "हमारे साथ जुड़ें और" : "Join the Movement for a"} <br/>
-                <span className="text-emerald-400">{isHi ? "बदलाव का हिस्सा बनें।" : "Cleaner Tomorrow."}</span>
-            </h4>
-            <div className="mt-10 relative z-10">
-                <Link to="/contact" className="inline-block px-10 py-5 bg-[#00a651] text-white rounded-full font-black text-xs uppercase tracking-[0.2em] shadow-2xl shadow-emerald-500/20 hover:scale-105 transition-transform">
-                    {isHi ? "संपर्क करें" : "Get In Touch"}
-                </Link>
+              <button className={`flex items-center gap-3 text-white px-8 py-4 rounded-full font-black text-xs uppercase tracking-widest transition-all shadow-lg ${item.buttonColor}`}>
+                Learn More <ArrowRight size={16} />
+              </button>
             </div>
+          </motion.div>
+        ))}
+      </section>
+
+      {/* 🔹 BOTTOM CTA */}
+      <section className="mt-32 max-w-5xl mx-auto px-6">
+        <div className="bg-[#1a1f5c] rounded-[3rem] p-12 text-center text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#00a651] opacity-20 blur-[100px] -mr-32 -mt-32"></div>
+          <h2 className="text-3xl font-black mb-6 uppercase tracking-tighter">Ready to implement this model?</h2>
+          <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+            Our Public Private Partnership (PPP) model involves Municipal Corporations, Pollution Boards, Industries, and Banks for sustainable impact.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button className="bg-[#00a651] hover:bg-white hover:text-[#1a1f5c] text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest transition-all">
+              Partner With Us
+            </button>
+            <button className="border border-white/20 hover:bg-white/10 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest transition-all">
+              Download Profile
+            </button>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
 
-export default Initiatives;
+export default InitiativesPage;  
