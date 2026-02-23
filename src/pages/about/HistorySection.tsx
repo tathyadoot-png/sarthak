@@ -138,7 +138,7 @@ const HistorySection = () => {
         {/* Desktop View (Horizontal) */}
         <div ref={sectionRef} className="hidden md:flex items-center pl-24 pr-[40vw] gap-24 whitespace-nowrap flex-grow -mt-10 lg:mt-0">
           {historyTimeline.map((item, index) => (
-            <div key={index} className="relative flex-shrink-0 w-[450px]">
+            <div key={index} className="relative flex-shrink-0 w-[500px]">
               {/* Ghost Year Text */}
               <div className="absolute -top-36 -left-6 text-[10rem] font-black opacity-[0.05] font-gotu text-secondary select-none pointer-events-none">
                 {item.year}
@@ -156,7 +156,7 @@ const HistorySection = () => {
                     <div className="w-1.5 h-8 bg-primary rounded-full" />
                     <h3 className="text-3xl font-bold text-secondary font-gotu leading-tight">{item.title}</h3>
                   </div>
-                  <p className="text-muted text-base font-medium opacity-80 leading-relaxed">{item.desc}</p>
+                  <p className="text-muted text-base text-justify font-medium opacity-80 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             </div>
