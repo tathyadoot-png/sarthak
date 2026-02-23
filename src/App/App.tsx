@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from "@/components/utils/ScrollToTop";
 import MainLayout from "@/layouts/MainLayout";
 import HomePage from "@/pages/home/HomePage";
 import NotFound from "@/pages/NotFound";
@@ -20,8 +21,8 @@ import Initiatives from "@/pages/initiatives/Initiatives";
 const App = () => {
   return (
     <BrowserRouter>
+    <ScrollToTop />
       <Routes>
-        {/* MainLayout ke paas apni state hai, yahan props dene ki zaroorat nahi */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/about/vision" element={<VisionMission />} />
