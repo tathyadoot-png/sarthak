@@ -17,6 +17,7 @@ import Donate from "@/pages/donate/Donate";
 import Partner from "@/pages/partner/Partner";
 import About from "@/pages/about/About";
 import Initiatives from "@/pages/initiatives/Initiatives";
+import Impact from "@/pages/impact/Impact";
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/initiatives/ewaste" element={<EWaste />} />
           <Route path="/initiatives/carcass" element={<PlasticWaste />} />
           <Route path="/initiatives/narmada" element={<PlasticWaste />} />
+             <Route path="/impact" element={<Impact />} />
           <Route path="/impact/karmis" element={<SarthakKarmis />} />
           <Route path="/impact/stories" element={<SuccessStories />} />
           <Route path="/awards" element={<Awards />} />
