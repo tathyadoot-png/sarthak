@@ -40,10 +40,10 @@ const Footer = ({ lang }: { lang: Lang }) => {
           <div className="lg:col-span-5 space-y-10">
             <div className="space-y-6">
                <div className="inline-flex items-center gap-4 bg-white/5 p-3 rounded-2xl border border-white/10">
-                 <img src={logo} alt="Sarthak" className="h-12 w-auto" />
+                 <img src={logo} alt="Sarthak" className="h-12 w-auto bg-white rounded-full p-1" />
                  <div className="pr-4">
                     <h2 className="text-2xl font-black tracking-tighter leading-none italic">SARTHAK</h2>
-                    <p className="text-[#00a651] text-[8px] font-black uppercase tracking-widest">SNHC India Foundation</p>
+                    <p className="text-[#00a651] text-[8px] font-black uppercase tracking-widest">Samudayik Vikas Evam Jan Kalyan Sanstha</p>
                  </div>
                </div>
                
@@ -114,7 +114,7 @@ const Footer = ({ lang }: { lang: Lang }) => {
                   </div>
                   <div className="flex gap-4 items-center">
                     <Mail size={18} className="text-[#2b3291] shrink-0" />
-                    <p className="text-xs font-bold text-white/70">info@sarthakindia.org</p>
+                    <p className="text-xs font-bold text-white/70">sarthakbpl10@gmail.com </p>
                   </div>
                 </div>
 

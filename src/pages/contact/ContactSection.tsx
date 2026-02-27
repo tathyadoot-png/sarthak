@@ -29,14 +29,14 @@ const ContactSection = () => {
     {
       icon: <Phone className="text-[#2b3291]" />,
       title: isHi ? "संपर्क नंबर" : "Contact No",
-      details: "0755-4921624, +91-9584003002",
-      link: "tel:+919584003002"
+      details: "9826325798",
+      link: "tel:+919826325798"
     },
     {
       icon: <Mail className="text-[#00a651]" />,
       title: isHi ? "ईमेल करें" : "Mail Us",
-      details: "snhcjournal@gmail.com",
-      link: "mailto:snhcjournal@gmail.com"
+      details: "sarthakbpl10@gmail.com",
+      link: "mailto:sarthakbpl10@gmail.com"
     },
     {
       icon: <Clock className="text-[#2b3291]" />,
