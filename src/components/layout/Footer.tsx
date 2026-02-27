@@ -1,12 +1,26 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin, Facebook, Instagram, Youtube, Globe, Heart, Send } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Facebook, Instagram, Youtube, Heart } from "lucide-react";
 import logo from "@/assets/logo.png";
 import type { Lang } from "@/layouts/MainLayout";
 import { useNavigate } from "react-router-dom";
 
 const Footer = ({ lang }: { lang: Lang }) => {
   const isHi = lang === "hi";
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const navLinks = [
+    { en: "Impact", hi: "हमारा प्रभाव", path: "/impact" },
+    { en: "Projects", hi: "परियोजनाएं", path: "/projects" },
+    { en: "Our Team", hi: "हमारी टीम", path: "/team" },
+    { en: "Media", hi: "मीडिया", path: "/media" },
+  ];
+
+  const policyLinks = [
+    { en: "Privacy Policy", hi: "गोपनीयता नीति" },
+    { en: "80G Status", hi: "80G स्थिति" },
+    { en: "Reports", hi: "रिपोर्ट्स" },
+  ];
+
   return (
     <footer className="relative w-full bg-slate-950 text-white pt-24 pb-10 overflow-hidden">
       
@@ -33,11 +47,11 @@ const navigate = useNavigate();
                  </div>
                </div>
                
-               <h3 className="text-3xl md:text-5xl font-black leading-[1.1] tracking-tight">
+               <h3 className="text-3xl md:text-5xl font-black leading-[1.2] tracking-tight">
                  {isHi ? (
-                   <>कचरे से <span className="text-[#00a651]">कंचन</span>,<br/>कल का <span className="text-[#2b3291]">नवनिर्माण</span>।</>
+                   <>कचरे से <span className="text-[#00a651]">कंचन</span>,<br/>स्वच्छ भारत का <span className="text-[#2b3291]">नवनिर्माण</span>।</>
                  ) : (
-                   <>Turning <span className="text-[#00a651]">Waste</span> to Wealth,<br/>for a <span className="text-[#2b3291]">Brighter</span> Future.</>
+                   <>Turning <span className="text-[#00a651]">Waste</span> to Wealth,<br/>for a <span className="text-[#2b3291]">Sustainable</span> Future.</>
                  )}
                </h3>
             </div>
@@ -58,22 +72,32 @@ const navigate = useNavigate();
           {/* 2. QUICK LINKS GRID */}
           <div className="lg:col-span-4 grid grid-cols-2 gap-8">
             <div className="space-y-8">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">{isHi ? "नेविगेट" : "Explore"}</h4>
+              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+                {isHi ? "नेविगेट करें" : "Explore"}
+              </h4>
               <ul className="space-y-4">
-                {["Impact", "Projects", "Our Team", "Media"].map((item) => (
-                  <li key={item} className="text-sm font-bold text-white/50 hover:text-white cursor-pointer transition-all flex items-center gap-2 group">
+                {navLinks.map((item) => (
+                  <li 
+                    key={item.en} 
+                    onClick={() => navigate(item.path)}
+                    className="text-sm font-bold text-white/50 hover:text-white cursor-pointer transition-all flex items-center gap-2 group"
+                  >
                     <div className="h-1 w-0 bg-[#00a651] group-hover:w-3 transition-all" />
-                    {item}
+                    {isHi ? item.hi : item.en}
                   </li>
                 ))}
               </ul>
             </div>
             <div className="space-y-8">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">{isHi ? "कानूनी" : "Policies"}</h4>
+              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+                {isHi ? "महत्वपूर्ण नीतियां" : "Policies"}
+              </h4>
               <ul className="space-y-4 text-sm font-bold text-white/50">
-                <li className="hover:text-white cursor-pointer transition-all">Privacy Policy</li>
-                <li className="hover:text-white cursor-pointer transition-all">80G Status</li>
-                <li className="hover:text-white cursor-pointer transition-all">Reports</li>
+                {policyLinks.map((policy) => (
+                   <li key={policy.en} className="hover:text-white cursor-pointer transition-all">
+                      {isHi ? policy.hi : policy.en}
+                   </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -84,7 +108,9 @@ const navigate = useNavigate();
                 <div className="space-y-4">
                   <div className="flex gap-4 items-start">
                     <MapPin size={18} className="text-[#00a651] mt-1 shrink-0" />
-                    <p className="text-xs font-bold text-white/70 leading-relaxed italic">Bhopal, Madhya Pradesh - 462039</p>
+                    <p className="text-xs font-bold text-white/70 leading-relaxed italic">
+                      {isHi ? "भोपाल, मध्य प्रदेश - 462039" : "Bhopal, Madhya Pradesh - 462039"}
+                    </p>
                   </div>
                   <div className="flex gap-4 items-center">
                     <Mail size={18} className="text-[#2b3291] shrink-0" />
@@ -94,10 +120,10 @@ const navigate = useNavigate();
 
                 <motion.button 
                   whileTap={{ scale: 0.95 }}
-                
-                onClick={()=>navigate("/donate")}  className="w-full py-4 bg-[#00a651] rounded-2xl text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#008a44] transition-all shadow-lg shadow-green-900/20"
+                  onClick={() => navigate("/donate")}  
+                  className="w-full py-4 bg-[#00a651] rounded-2xl text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#008a44] transition-all shadow-lg shadow-green-900/20"
                 >
-                  {isHi ? "सहयोग दें" : "Donate Now"} <Heart size={14} className="fill-current" />
+                  {isHi ? "सहयोग प्रदान करें" : "Donate Now"} <Heart size={14} className="fill-current" />
                 </motion.button>
              </div>
           </div>
@@ -107,14 +133,18 @@ const navigate = useNavigate();
         {/* --- BOTTOM SECTION --- */}
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-6">
-            <p className="text-[10px] font-black text-white/20 uppercase tracking-widest">© 2026 Sarthak India</p>
+            <p className="text-[10px] font-black text-white/20 uppercase tracking-widest">
+              © 2026 Sarthak India
+            </p>
             <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-2">
                <div className="h-1.5 w-1.5 rounded-full bg-[#fff200] animate-pulse" />
-               <span className="text-[8px] font-black text-white/40 uppercase tracking-widest italic">Registered NGO</span>
+               <span className="text-[8px] font-black text-white/40 uppercase tracking-widest italic">
+                 {isHi ? "पंजीकृत एनजीओ" : "Registered NGO"}
+               </span>
             </div>
           </div>
 
-          <a href="https://inedco.com" target="_blank" className="flex items-center gap-4 group">
+          <a href="https://inedco.com" target="_blank" rel="noreferrer" className="flex items-center gap-4 group">
              <div className="text-right">
                 <p className="text-[8px] font-black text-white/20 uppercase leading-none">Powered by</p>
                 <p className="text-xs font-black text-white/80 group-hover:text-[#2b3291] transition-colors tracking-tighter">INEDCO NETWORKS</p>
