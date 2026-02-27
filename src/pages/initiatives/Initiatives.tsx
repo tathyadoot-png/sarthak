@@ -100,7 +100,7 @@ const InitiativesPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-slate-500 text-lg max-w-3xl mx-auto leading-relaxed"
+          className="text-slate-500 text-lg text-justify max-w-3xl mx-auto leading-relaxed"
         >
           Since 1998, Sarthak has evolved as a leading agency in Madhya Pradesh, 
           pioneering PPP models that turn waste into wealth while empowering marginalized communities.
@@ -165,7 +165,7 @@ const InitiativesPage = () => {
         <div className="bg-[#1a1f5c] rounded-[3rem] p-12 text-center text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#00a651] opacity-20 blur-[100px] -mr-32 -mt-32"></div>
           <h2 className="text-3xl font-black mb-6 uppercase tracking-tighter">Ready to implement this model?</h2>
-          <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-blue-100 mb-8 text-justify max-w-2xl mx-auto">
             Our Public Private Partnership (PPP) model involves Municipal Corporations, Pollution Boards, Industries, and Banks for sustainable impact.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

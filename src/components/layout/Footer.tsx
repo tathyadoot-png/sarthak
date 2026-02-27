@@ -22,7 +22,7 @@ const Footer = ({ lang }: { lang: Lang }) => {
   ];
 
   return (
-    <footer className="relative w-full bg-slate-950 text-white pt-24 pb-10 overflow-hidden">
+    <footer className="relative w-full bg-blue-950 text-white pt-24 pb-10 overflow-hidden">
       
       {/* --- DESIGN ACCENTS --- */}
       <div className="absolute top-0 left-0 w-full h-1 flex">

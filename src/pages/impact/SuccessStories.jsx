@@ -35,10 +35,10 @@ const SuccessStories = () => {
 
   return (
     // Fixed: Reduced padding-top and added a min-h-screen for stability
-    <div className="bg-[#fcfcfd] w-full min-h-screen pt-20 md:pt-20 pb-20 overflow-hidden">
+    <div className="bg-[#fcfcfd] w-full min-h-screen pt-40 md:pt-20 pb-20 overflow-hidden">
       
       {/* 🔹 1. HERO HEADER SECTION */}
-      <section className="px-6 md:px-14 max-w-[1400px] mx-auto mt-12 md:mt-20">
+      <section className="px-6 md:px-14 max-w-[1400px] mx-auto mt-20">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <div className="max-w-4xl">
             <motion.div 

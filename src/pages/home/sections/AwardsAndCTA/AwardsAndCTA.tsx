@@ -105,7 +105,7 @@ const AwardsAndCTA: React.FC<Props> = ({ lang }) => {
 
       {/* 🔹 SECTION 7: CALL TO ACTION */}
       <section className="px-4 md:px-10 pb-20">
-        <div className="max-w-7xl mx-auto bg-slate-950 rounded-[3rem] md:rounded-[5rem] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto bg-slate-900 rounded-[3rem] md:rounded-[5rem] relative overflow-hidden">
           
           <div className="absolute inset-0 opacity-20">
             <img 
