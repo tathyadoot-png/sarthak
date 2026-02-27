@@ -18,11 +18,13 @@ import Partner from "@/pages/partner/Partner";
 import About from "@/pages/about/About";
 import Initiatives from "@/pages/initiatives/Initiatives";
 import Impact from "@/pages/impact/Impact";
+import OrganicPage from "@/pages/initiatives/OrganicPage";
+import SocialPage from "@/pages/initiatives/SocialPage";
 
 const App = () => {
   return (
     <BrowserRouter>
-    <ScrollToTop />
+      <ScrollToTop />
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
@@ -34,7 +36,7 @@ const App = () => {
           <Route path="/initiatives/ewaste" element={<EWaste />} />
           <Route path="/initiatives/carcass" element={<PlasticWaste />} />
           <Route path="/initiatives/narmada" element={<PlasticWaste />} />
-             <Route path="/impact" element={<Impact />} />
+          <Route path="/impact" element={<Impact />} />
           <Route path="/impact/karmis" element={<SarthakKarmis />} />
           <Route path="/impact/stories" element={<SuccessStories />} />
           <Route path="/awards" element={<Awards />} />
@@ -42,7 +44,9 @@ const App = () => {
           <Route path="/donate" element={<Donate />} />
           <Route path="/partner" element={<Partner />} />
           <Route path="/about" element={<About />} />
-           <Route path="/initiatives" element={<Initiatives />} />
+          <Route path="/initiatives" element={<Initiatives />} />
+          <Route path="/initiatives/organic" element={<OrganicPage />} />
+          <Route path="/initiatives/social" element={<SocialPage />} />
 
         </Route>
 

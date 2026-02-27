@@ -39,7 +39,7 @@ const AboutSection: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
             <motion.div variants={slideIn} className="space-y-4 md:space-y-6">
               <div className="inline-flex items-center gap-4 text-[#00a651]">
                 <span className="h-px w-8 md:w-10 bg-[#00a651]" />
-                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] md:tracking-[0.4em]">Impact Since 1998</span>
+                <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] md:tracking-[0.4em] mb-1">  {isHi ? "1998 से निरंतर प्रभाव" : "Impact Since 1998 "}  </span>
               </div>
               <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[80px] font-black leading-[1.1] lg:leading-[0.85] tracking-tighter">
                 {isHi ? "सार्थक:" : "Sarthak:"} <br className="hidden sm:block" />
@@ -112,7 +112,7 @@ const AboutSection: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
                       <Zap size={18} className="text-[#00a651] m-1" fill="currentColor" />
                     </div>
                     <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-slate-400">
-                      Expert Staff in Env Protection & Health
+                      {isHi ? "पर्यावरण संरक्षण और स्वास्थ्य क्षेत्र के विशेषज्ञ स्टाफ" : "Expert Staff in Env Protection & Health"}
                     </p>
                   </div>
                   <a

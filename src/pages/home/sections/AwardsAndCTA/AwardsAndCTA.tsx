@@ -15,25 +15,25 @@ const AwardsAndCTA: React.FC<Props> = ({ lang }) => {
     {
       year: "2020",
       title: isHi ? "CII वेस्ट टू वेल्थ अवार्ड" : "CII Waste to Wealth Award",
-      org: "Confederation of Indian Industry",
+      org: isHi ? "संयुक्त भारतीय उद्यमियों के संघ" : "Confederation of Indian Industry",
       desc: isHi ? "प्लास्टिक प्रबंधन में राष्ट्रीय स्तर पर द्वितीय स्थान।" : "National Runner-up in Plastic Waste Management Excellence."
     },
     {
       year: "2019",
-      title: "Global Environment Facility",
-      org: "Washington DC, USA",
+      title: isHi ? "वैश्विक पर्यावरण सुविधा" : "Global Environment Facility",
+      org: isHi ? "वाशिंगटन डीसी, यूएसए" : "Washington DC, USA",
       desc: isHi ? "पर्यावरण संरक्षण में वैश्विक योगदान के लिए।" : "Special Recognition for Global Environmental Impact."
     },
     {
       year: "2018",
       title: isHi ? "स्वच्छता सम्मान अवार्ड" : "Swachhta Samman Award",
-      org: "Govt. of Madhya Pradesh",
+      org: isHi ? "मध्य प्रदेश सरकार" : "Govt. of Madhya Pradesh",
       desc: isHi ? "शहरी कचरा प्रबंधन में उत्कृष्ट कार्य।" : "Highest honor for urban waste management by the State."
     },
     {
       year: "2018",
-      title: "Earth Care Awards",
-      org: "JSW & Times of India",
+      title: isHi ? "पृथ्वी सेवा पुरस्कार" : "Earth Care Awards",
+      org: isHi ? "जेएसडब्ल्यू एंड टाइम्स ऑफ इंडिया" : "JSW & Times of India",
       desc: isHi ? "प्लास्टिक कचरे के प्रभावी पुन: उपयोग के लिए।" : "Innovations in plastic upcycling and reuse."
     }
   ];

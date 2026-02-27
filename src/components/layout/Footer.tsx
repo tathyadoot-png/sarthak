@@ -22,7 +22,7 @@ const Footer = ({ lang }: { lang: Lang }) => {
   ];
 
   return (
-    <footer className="relative w-full bg-blue-950 text-white pt-24 pb-10 overflow-hidden">
+    <footer className="relative w-full bg-slate-900 text-white pt-24 pb-10 overflow-hidden">
       
       {/* --- DESIGN ACCENTS --- */}
       <div className="absolute top-0 left-0 w-full h-1 flex">
@@ -61,7 +61,7 @@ const Footer = ({ lang }: { lang: Lang }) => {
                 <motion.a 
                   whileHover={{ y: -5, color: "#fff" }}
                   key={i} href="#" 
-                  className="h-12 w-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white/40 transition-all"
+                  className="h-12 w-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white/70 transition-all"
                 >
                   <Icon size={20} />
                 </motion.a>
@@ -72,7 +72,7 @@ const Footer = ({ lang }: { lang: Lang }) => {
           {/* 2. QUICK LINKS GRID */}
           <div className="lg:col-span-4 grid grid-cols-2 gap-8">
             <div className="space-y-8">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/70">
                 {isHi ? "नेविगेट करें" : "Explore"}
               </h4>
               <ul className="space-y-4">
@@ -80,7 +80,7 @@ const Footer = ({ lang }: { lang: Lang }) => {
                   <li 
                     key={item.en} 
                     onClick={() => navigate(item.path)}
-                    className="text-sm font-bold text-white/50 hover:text-white cursor-pointer transition-all flex items-center gap-2 group"
+                    className="text-sm font-bold text-white/70 hover:text-white cursor-pointer transition-all flex items-center gap-2 group"
                   >
                     <div className="h-1 w-0 bg-[#00a651] group-hover:w-3 transition-all" />
                     {isHi ? item.hi : item.en}
@@ -89,10 +89,10 @@ const Footer = ({ lang }: { lang: Lang }) => {
               </ul>
             </div>
             <div className="space-y-8">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/70">
                 {isHi ? "महत्वपूर्ण नीतियां" : "Policies"}
               </h4>
-              <ul className="space-y-4 text-sm font-bold text-white/50">
+              <ul className="space-y-4 text-sm font-bold text-white/70">
                 {policyLinks.map((policy) => (
                    <li key={policy.en} className="hover:text-white cursor-pointer transition-all">
                       {isHi ? policy.hi : policy.en}
