@@ -13,7 +13,7 @@ import Partners from "./sections/Partners/Partners";
 import SarthakKarmi from "./sections/SarthakKarmi/SarthakKarmi";
 import FocusAndImpact from "./sections/FocusAndImpact/FocusAndImpact";
 import AwardsAndCTA from "./sections/AwardsAndCTA/AwardsAndCTA";
-// import HeroSection from "./sections/hero/HeroSection";
+import BhopalModel from "./sections/home/BhopalModel";
 
 const HomePage = () => {
   const { lang } = useOutletContext<{ lang: Lang }>();
@@ -25,6 +25,7 @@ const HomePage = () => {
       </section>
       <AboutSection lang={lang} />
       <FocusAndImpact lang={lang} />
+      <BhopalModel  lang={lang}/>
       <Partners  lang={lang} />
       <SarthakKarmi lang={lang} />
       <AwardsAndCTA lang={lang} />
