@@ -1,147 +1,172 @@
+"use client";
+
 import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { useOutletContext } from "react-router-dom";
 import { 
   Send, Mail, MapPin, Phone, Clock, 
-  Facebook, Twitter, Instagram 
+  Facebook, Twitter, Instagram, Linkedin, ArrowUpRight 
 } from "lucide-react";
 
-// 1. Interface ko component ke bahar rakhein
 interface ContactContext {
   lang: "hi" | "en";
 }
 
 const ContactSection = () => {
-  // 2. Context ko type ke saath access karein
   const context = useOutletContext<ContactContext>();
   const lang = context?.lang || "en";
-  const isHi = lang === "hi"; // Ab ye niche error nahi dega
+  const isHi = lang === "hi";
 
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
   const contactInfo = [
     {
-      icon: <MapPin className="text-[#00a651]" />,
-      title: isHi ? "हमारा पता" : "Postal Address",
+      icon: <MapPin size={20} />,
+      title: isHi ? "हमारा पता" : "POSTAL ADDRESS",
       details: "F3, Jyoti Apartment, Plot No 483, B sector, Sarvadharma, Kolar Road, Bhopal, MP 462042",
       link: "https://maps.google.com"
     },
     {
-      icon: <Phone className="text-[#2b3291]" />,
-      title: isHi ? "संपर्क नंबर" : "Contact No",
-      details: "9826325798",
+      icon: <Phone size={20} />,
+      title: isHi ? "संपर्क नंबर" : "CONTACT NO",
+      details: "+91 98263 25798",
       link: "tel:+919826325798"
     },
     {
-      icon: <Mail className="text-[#00a651]" />,
-      title: isHi ? "ईमेल करें" : "Mail Us",
+      icon: <Mail size={20} />,
+      title: isHi ? "ईमेल करें" : "MAIL US",
       details: "sarthakbpl10@gmail.com",
       link: "mailto:sarthakbpl10@gmail.com"
     },
     {
-      icon: <Clock className="text-[#2b3291]" />,
-      title: isHi ? "कार्य समय" : "Operation Hours",
+      icon: <Clock size={20} />,
+      title: isHi ? "कार्य समय" : "OPERATION HOURS",
       details: isHi ? "सोम-शनि : 10:00 AM से 07:00 PM" : "Mon-Sat : 10.00 AM to 07.00 PM",
       subDetails: isHi ? "(रविवार: बंद)" : "(Sunday: Closed)"
     }
   ];
 
   return (
-    <section className="py-32 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-44 bg-[#fcfcfb] overflow-hidden selection:bg-[#FFBF00] selection:text-[#3e2723]">
+      <div className="max-w-7xl mx-auto px-6 md:px-14">
         
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-          <div className="max-w-2xl">
-            <motion.span 
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="text-[#00a651] font-black uppercase tracking-[0.2em] text-[10px]"
+        <div className="flex flex-col md:flex-row justify-between items-start mb-24 gap-12">
+          <div className="max-w-3xl">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-4 mb-6"
             >
-              Get in Touch
-            </motion.span>
-            <motion.h3 
-              initial={{ opacity: 0, y: 20 }}
+              <div className="h-[2px] w-12 bg-[#FFBF00]" />
+              <span className="text-[#3e2723] font-black uppercase tracking-[0.4em] text-[10px]">
+                {isHi ? "संपर्क करें" : "GET IN TOUCH"}
+              </span>
+            </motion.div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-5xl md:text-6xl font-black text-slate-900 italic mt-4 leading-tight"
+              className="text-6xl md:text-[8rem] font-[1000] text-[#3e2723] italic leading-[0.85] tracking-tighter uppercase"
             >
-              {isHi ? "आइये साथ मिलकर काम करें" : "Let's Scale the Impact Together"}
-            </motion.h3>
+              {isHi ? "चलो बात" : "LET'S"} <br />
+              <span className="text-[#FFBF00] not-italic">{isHi ? "करते हैं" : "CONNECT."}</span>
+            </motion.h2>
           </div>
-          <div className="hidden md:block h-24 w-px bg-slate-200" />
+          <div className="hidden md:block h-32 w-px bg-[#3e2723]/10 self-end mb-4" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Left Side: Contact Cards */}
-          <div className="lg:col-span-5 space-y-4">
-            {contactInfo.map((info, i) => (
-              <motion.a
-                key={i}
-                href={info.link}
-                target="_blank"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="group flex items-start gap-6 p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500"
-              >
-                <div className="p-4 bg-white rounded-2xl shadow-sm group-hover:scale-110 transition-transform duration-500">
-                  {info.icon}
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-400 text-[10px] uppercase tracking-widest mb-1">{info.title}</h4>
-                  <p className="text-slate-900 font-bold leading-relaxed">{info.details}</p>
-                  {info.subDetails && <p className="text-red-500 text-xs mt-1 font-bold">{info.subDetails}</p>}
-                </div>
-              </motion.a>
-            ))}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="grid grid-cols-1 gap-4">
+              {contactInfo.map((info, i) => (
+                <motion.a
+                  key={i}
+                  href={info.link}
+                  target="_blank"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group flex items-center gap-8 p-10 rounded-[3rem] bg-white border-4 border-[#3e2723]/5 hover:border-[#FFBF00] transition-all duration-500 shadow-xl shadow-[#3e2723]/5"
+                >
+                  <div className="w-16 h-16 shrink-0 bg-[#3e2723] text-[#FFBF00] rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg">
+                    {info.icon}
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-black text-[#3e2723]/40 text-[9px] uppercase tracking-[0.3em] mb-2 italic">{info.title}</h4>
+                    <p className="text-[#3e2723] font-[1000] leading-tight text-lg uppercase italic tracking-tighter">{info.details}</p>
+                    {info.subDetails && <p className="text-[#FFBF00] text-[10px] mt-2 font-black uppercase tracking-widest">{info.subDetails}</p>}
+                  </div>
+                  <ArrowUpRight className="text-[#3e2723]/10 group-hover:text-[#FFBF00] transition-colors" size={24} />
+                </motion.a>
+              ))}
+            </div>
 
-            <div className="p-8">
-               <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">Social Ecosystem</p>
+            {/* Social Links */}
+            <div className="p-10 bg-[#3e2723] rounded-[3rem] flex items-center justify-between">
+               <span className="text-[10px] font-[1000] text-white/40 uppercase tracking-[0.3em] italic">Ecosystem</span>
                <div className="flex gap-4">
-                  {[Facebook, Twitter, Instagram].map((Icon, idx) => (
-                    <a key={idx} href="#" className="h-12 w-12 flex items-center justify-center rounded-2xl bg-slate-900 text-white hover:bg-[#00a651] transition-colors">
-                      <Icon size={20} />
-                    </a>
-                  ))}
+                 {[Facebook, Instagram, Linkedin, Twitter].map((Icon, idx) => (
+                   <a key={idx} href="#" className="h-12 w-12 flex items-center justify-center rounded-2xl bg-white/5 text-[#FFBF00] hover:bg-[#FFBF00] hover:text-[#3e2723] transition-all duration-300">
+                     <Icon size={18} />
+                   </a>
+                 ))}
                </div>
             </div>
           </div>
 
-          {/* Right Side: Form */}
+          {/* Right Side: Heavy Industrial Form */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="lg:col-span-7 bg-slate-950 rounded-[4rem] p-10 md:p-16 text-white relative overflow-hidden shadow-2xl shadow-slate-900/20"
+            className="lg:col-span-7 bg-white rounded-[4rem] p-12 md:p-20 border-8 border-[#3e2723] relative overflow-hidden shadow-2xl"
           >
             <div className="relative z-10">
-              <h4 className="text-3xl font-black italic mb-2">{isHi ? "संदेश भेजें" : "Send a Message"}</h4>
-              <p className="text-gray-400 mb-10 font-medium">Have a query? Our team will get back to you within 24 hours.</p>
+              <h4 className="text-4xl md:text-5xl font-[1000] text-[#3e2723] italic uppercase tracking-tighter mb-4">{isHi ? "संदेश भेजें" : "SEND MESSAGE"}</h4>
+              <p className="text-[#3e2723]/50 mb-12 font-bold uppercase text-xs tracking-widest">
+                {isHi ? "हमारी टीम 24 घंटों में आपसे संपर्क करेगी" : "Our team will respond within 24 business hours."}
+              </p>
               
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase text-gray-500 ml-1">Your Name</label>
-                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00a651] transition-all" />
+              <form className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#3e2723] italic ml-1">Full Name</label>
+                    <input type="text" className="w-full bg-[#fcfcfb] border-4 border-[#3e2723]/5 rounded-3xl px-8 py-5 outline-none focus:border-[#FFBF00] transition-all font-bold text-[#3e2723]" />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-bold uppercase text-gray-500 ml-1">Email Address</label>
-                    <input type="email" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00a651] transition-all" />
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#3e2723] italic ml-1">Email ID</label>
+                    <input type="email" className="w-full bg-[#fcfcfb] border-4 border-[#3e2723]/5 rounded-3xl px-8 py-5 outline-none focus:border-[#FFBF00] transition-all font-bold text-[#3e2723]" />
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <label className="text-[10px] font-bold uppercase text-gray-500 ml-1">Message</label>
-                  <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-3xl px-6 py-4 outline-none focus:border-[#00a651] transition-all resize-none"></textarea>
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#3e2723] italic ml-1">Subject</label>
+                  <input type="text" className="w-full bg-[#fcfcfb] border-4 border-[#3e2723]/5 rounded-3xl px-8 py-5 outline-none focus:border-[#FFBF00] transition-all font-bold text-[#3e2723]" />
                 </div>
-                <button type="button" className="w-full h-16 bg-[#00a651] hover:bg-[#008c44] text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 transition-all active:scale-95 shadow-xl shadow-green-900/20">
-                  {isHi ? "अभी भेजें" : "Dispatch Now"} <Send size={16} />
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#3e2723] italic ml-1">Your Message</label>
+                  <textarea rows={4} className="w-full bg-[#fcfcfb] border-4 border-[#3e2723]/5 rounded-[2.5rem] px-8 py-6 outline-none focus:border-[#FFBF00] transition-all font-bold text-[#3e2723] resize-none"></textarea>
+                </div>
+                
+                <button type="button" className="group w-full h-24 bg-[#3e2723] hover:bg-[#FFBF00] text-white hover:text-[#3e2723] rounded-3xl font-[1000] uppercase tracking-[0.4em] text-sm flex items-center justify-center gap-6 transition-all duration-500 shadow-2xl active:scale-95">
+                  {isHi ? "अभी भेजें" : "DISPATCH NOW"} 
+                  <Send size={20} className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
                 </button>
               </form>
             </div>
-            <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-[#00a651]/10 rounded-full blur-[100px]" />
+
+            {/* Background Branding for the form */}
+            <div className="absolute top-[-5%] right-[-5%] text-[15rem] font-black text-[#3e2723]/[0.03] pointer-events-none select-none uppercase italic leading-none">
+              Mail
+            </div>
           </motion.div>
         </div>
+      </div>
+
+      {/* Large Background Text Decoration */}
+      <div className="absolute bottom-0 right-0 text-[20rem] font-[1000] text-[#3e2723]/[0.02] pointer-events-none select-none uppercase italic leading-none -mb-20 -mr-20">
+        Contact
       </div>
     </section>
   );

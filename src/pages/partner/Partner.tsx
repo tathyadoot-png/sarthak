@@ -2,10 +2,11 @@
 
 import React from 'react';
 import { motion } from "framer-motion";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import { 
   Building2, Handshake, BarChart3, Globe, 
-  ArrowRight, ShieldCheck, Zap, Layers 
+  ArrowRight, ShieldCheck, Zap, Layers,
+  Briefcase, Factory, Scale
 } from "lucide-react";
 
 interface PartnerContext { lang: "hi" | "en"; }
@@ -14,27 +15,28 @@ const Partner = () => {
   const context = useOutletContext<PartnerContext>();
   const lang = context?.lang || "en";
   const isHi = lang === "hi";
+  const navigate = useNavigate();
 
   const services = [
     { 
-      icon: <BarChart3 size={24} />, 
-      title: isHi ? "CSR प्रोजेक्ट्स" : "CSR Projects", 
+      icon: <Factory size={28} />, 
+      title: isHi ? "CSR प्रोजेक्ट्स" : "CSR PROJECTS", 
       desc: isHi 
         ? "शून्य अपशिष्ट समाधानों का पूर्ण क्रियान्वयन और प्रबंधन।" 
         : "Complete execution and management of zero-waste solutions for corporates.",
       tag: "Implementation"
     },
     { 
-      icon: <Globe size={24} />, 
-      title: isHi ? "EPR सेवाएं" : "EPR Services", 
+      icon: <Scale size={28} />, 
+      title: isHi ? "EPR सेवाएं" : "EPR SERVICES", 
       desc: isHi 
         ? "प्लास्टिक और ई-कचरे के लिए कानूनी और परिचालन अनुपालन।" 
         : "Legal and operational compliance for plastic and e-waste management.",
       tag: "Compliance"
     },
     { 
-      icon: <Layers size={24} />, 
-      title: isHi ? "सस्टेनेबिलिटी ऑडिट" : "Sustainability Audit", 
+      icon: <BarChart3 size={28} />, 
+      title: isHi ? "सस्टेनेबिलिटी ऑडिट" : "SUSTAINABILITY AUDIT", 
       desc: isHi 
         ? "आपके संस्थान के कार्बन फुटप्रिंट का विश्लेषण और सुधार।" 
         : "Analyzing and improving your organization's carbon footprint.",
@@ -43,101 +45,130 @@ const Partner = () => {
   ];
 
   return (
-    <div className="py-32 bg-white min-h-screen text-slate-900 selection:bg-emerald-100">
-      <div className="max-w-6xl mx-auto px-6">
+    <div className="py-44 bg-[#fcfcfb] min-h-screen text-[#3e2723] selection:bg-[#FFBF00] selection:text-[#3e2723]">
+      <div className="max-w-7xl mx-auto px-6 md:px-14">
         
-        {/* 🔹 Compact Header */}
-        <div className="mb-20 border-l-4 border-emerald-500 pl-8">
+        {/* 🔹 Heavy Industrial Header */}
+        <div className="mb-32 relative">
           <motion.div 
-            initial={{ opacity: 0, x: -10 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2 mb-4"
+            className="flex items-center gap-4 mb-8"
           >
-            <Zap size={14} className="text-emerald-500 fill-emerald-500" />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
-              Partnership Portal
+            <div className="h-[2px] w-12 bg-[#FFBF00]" />
+            <span className="text-[#3e2723] font-black uppercase tracking-[0.4em] text-[10px]">
+              {isHi ? "साझेदारी" : "PARTNERSHIP PORTAL"}
             </span>
           </motion.div>
           
-          <motion.h1 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-extrabold text-[#1a1f5c] tracking-tight leading-tight"
-          >
-            {isHi ? "कॉर्पोरेट पार्टनरशिप प्रोग्राम" : "Corporate Partnership Program"}
-          </motion.h1>
-          
-          <p className="text-slate-500 mt-4 max-w-xl text-lg font-medium leading-relaxed">
-            {isHi 
-              ? "सार्थक के साथ जुड़कर अपने व्यावसायिक लक्ष्यों को पर्यावरणीय जिम्मेदारी के साथ जोड़ें।"
-              : "Align your business goals with environmental responsibility by partnering with Sarthak."}
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="text-6xl md:text-[7.5rem] font-[1000] text-[#3e2723] tracking-tighter leading-[0.85] uppercase italic"
+            >
+              {isHi ? "कॉर्पोरेट" : "CORPORATE"} <br />
+              <span className="text-[#FFBF00] not-italic">{isHi ? "गठबंधन" : "ALLIANCE."}</span>
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-[#3e2723]/60 text-xl font-bold uppercase italic border-l-4 border-[#FFBF00] pl-8 max-w-md mb-4"
+            >
+              {isHi 
+                ? "सार्थक के साथ जुड़कर अपने व्यावसायिक लक्ष्यों को पर्यावरणीय जिम्मेदारी के साथ जोड़ें।"
+                : "Aligning industrial growth with environmental circularity through strategic partnerships."}
+            </motion.p>
+          </div>
         </div>
 
-        {/* 🔹 Services Grid: Bento Style */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+        {/* 🔹 Services Grid: Industrial Bento */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
           {services.map((s, i) => (
             <motion.div 
               key={i} 
-              whileHover={{ y: -8 }}
-              className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-emerald-900/5 transition-all duration-500 group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -15 }}
+              className="p-12 bg-white rounded-[4rem] border-4 border-[#3e2723]/5 hover:border-[#FFBF00] transition-all duration-500 group shadow-xl shadow-[#3e2723]/5"
             >
-              <div className="flex justify-between items-start mb-12">
-                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-emerald-600 shadow-sm border border-slate-100 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500">
+              <div className="flex justify-between items-start mb-16">
+                <div className="w-20 h-20 bg-[#3e2723] rounded-[2rem] flex items-center justify-center text-[#FFBF00] shadow-2xl group-hover:rotate-12 transition-transform duration-500">
                   {s.icon}
                 </div>
-                <span className="text-[9px] font-black uppercase tracking-widest text-slate-300 group-hover:text-emerald-500 transition-colors">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#3e2723]/20 group-hover:text-[#FFBF00] transition-colors">
                   {s.tag}
                 </span>
               </div>
               
-              <h3 className="text-xl font-bold mb-4 text-[#1a1f5c]">{s.title}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed mb-8">{s.desc}</p>
+              <h3 className="text-2xl font-[1000] mb-6 text-[#3e2723] uppercase italic tracking-tighter leading-none">{s.title}</h3>
+              <p className="text-[#3e2723]/50 text-xs font-bold uppercase leading-relaxed mb-12 h-16">{s.desc}</p>
               
-              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-emerald-600 cursor-pointer group/link">
-                Learn More <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
+              <div className="pt-8 border-t border-[#3e2723]/5 flex items-center justify-between group/link cursor-pointer">
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#3e2723]">Details</span>
+                <div className="w-10 h-10 rounded-full border-2 border-[#3e2723]/10 flex items-center justify-center group-hover/link:bg-[#3e2723] group-hover/link:text-[#FFBF00] transition-all">
+                   <ArrowRight size={16} />
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* 🔹 Compact CTA Box */}
+        {/* 🔹 High-Impact CTA Box */}
         <motion.div 
-          className="bg-[#1a1f5c] rounded-[3rem] p-10 md:p-14 relative overflow-hidden"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          className="bg-[#3e2723] rounded-[5rem] p-12 md:p-24 relative overflow-hidden shadow-2xl"
         >
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex items-center gap-6">
-              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center border border-white/10 shrink-0">
-                <ShieldCheck size={32} className="text-emerald-400" />
+          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div className="flex flex-col md:flex-row items-center gap-10">
+              <div className="w-24 h-24 bg-[#FFBF00] rounded-[2.5rem] flex items-center justify-center rotate-12 shrink-0 shadow-2xl">
+                <ShieldCheck size={48} className="text-[#3e2723]" />
               </div>
-              <div>
-                <h2 className="text-2xl font-bold text-white">
-                  {isHi ? "प्रस्ताव के लिए अनुरोध करें" : "Request a Detailed Proposal"}
+              <div className="text-center md:text-left">
+                <h2 className="text-4xl md:text-5xl font-[1000] text-white uppercase italic tracking-tighter leading-none mb-4">
+                  {isHi ? "प्रस्ताव का अनुरोध करें" : "REQUEST A PROPOSAL"}
                 </h2>
-                <p className="text-blue-200/60 text-sm mt-1">
-                  {isHi ? "हमारी टीम 24 घंटे में आपसे संपर्क करेगी।" : "Our specialists will reach out within 24 business hours."}
+                <p className="text-[#FFBF00] text-[10px] font-black uppercase tracking-[0.4em]">
+                  {isHi ? "हमारी विशेषज्ञ टीम 24 घंटे में संपर्क करेगी।" : "Get a customized sustainability roadmap in 24 hours."}
                 </p>
               </div>
             </div>
 
-            <button className="px-10 h-16 bg-emerald-500 hover:bg-white text-[#1a1f5c] rounded-2xl font-black uppercase tracking-widest text-[11px] flex items-center gap-3 transition-all active:scale-95 shadow-lg shadow-emerald-500/20">
-              {isHi ? "संपर्क करें" : "Contact Now"} <Handshake size={18} />
+            <button 
+              onClick={() => navigate('/contact')}
+              className="px-16 py-8 bg-[#FFBF00] hover:bg-white text-[#3e2723] rounded-3xl font-[1000] uppercase tracking-[0.3em] text-xs flex items-center gap-4 transition-all active:scale-95 shadow-2xl"
+            >
+              {isHi ? "अभी जुड़ें" : "CONTACT NOW"} <Handshake size={20} />
             </button>
           </div>
           
-          {/* Subtle Background Art */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl -mr-20 -mt-20" />
+          {/* Industrial Background Art */}
+          <div className="absolute top-0 right-0 text-[20rem] font-black text-white/[0.02] pointer-events-none select-none uppercase italic leading-none -mr-20">
+            CSR
+          </div>
         </motion.div>
 
-        {/* 🔹 Bottom Minimal Trust Bar */}
-        <div className="mt-20 pt-10 border-t border-slate-100 flex flex-wrap justify-between items-center gap-6 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
-           <Building2 size={24} />
-           <div className="h-4 w-px bg-slate-200 hidden md:block" />
-           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 italic text-center md:text-left">
-             A Sarthak Sustainable Management Initiative
+        {/* 🔹 Trust Footer */}
+        <div className="mt-32 pt-16 border-t-4 border-[#3e2723]/5 flex flex-col md:flex-row justify-between items-center gap-8">
+           <div className="flex items-center gap-6 grayscale opacity-30">
+              <Building2 size={32} />
+              <Briefcase size={32} />
+              <Globe size={32} />
+           </div>
+           <p className="text-[10px] font-[1000] uppercase tracking-[0.5em] text-[#3e2723]/20 italic">
+             A Sarthak Sustainable Management Initiative © 2026
            </p>
         </div>
 
+      </div>
+
+      {/* Background Decor */}
+      <div className="fixed bottom-0 left-0 text-[25rem] font-[1000] text-[#3e2723]/[0.01] pointer-events-none select-none uppercase italic leading-none -ml-20">
+        ALLIANCE
       </div>
     </div>
   );

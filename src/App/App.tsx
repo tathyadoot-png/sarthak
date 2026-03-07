@@ -28,6 +28,8 @@ import WasteToWealthPage from "@/pages/whatwedo/WasteToWealthPage";
 import BhopalModelPage from "@/pages/whatwedo/BhopalModelPage";
 import ZeroWasteCampusPage from "@/pages/whatwedo/ZeroWasteCampusPage";
 import BehaviourChangePage from "@/pages/whatwedo/BehaviourChangePage";
+import Partners from "@/pages/home/sections/Partners/Partners";
+import AchievementsPage from "@/pages/whatwedo/AchievementsPage";
 
 
 const App = () => {
@@ -46,12 +48,13 @@ const App = () => {
           <Route path="/initiatives/carcass" element={<PlasticWaste />} />
           <Route path="/initiatives/narmada" element={<PlasticWaste />} />
           <Route path="/impact" element={<Impact />} />
-          <Route path="karmis" element={<SarthakKarmis />} />
-          <Route path="/impact/stories" element={<SuccessStories />} />
+          <Route path="sarthak-karmi" element={<SarthakKarmis />} />
+          <Route path="/success-stories" element={<SuccessStories />} />
           <Route path="/awards" element={<Awards />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/donate" element={<Donate />} />
-          <Route path="/partner" element={<Partner />} />
+          <Route path="/partnerships" element={<Partners />} />
+             <Route path="/partner" element={<Partner />} />
           <Route path="/about" element={<About />} />
           <Route path="/initiatives" element={<Initiatives />} />
           <Route path="/initiatives/organic" element={<OrganicPage />} />
@@ -64,6 +67,7 @@ const App = () => {
           <Route path="/bhopal-model" element={<BhopalModelPage />} />
           <Route path="/zero-waste-campus" element={<ZeroWasteCampusPage />} />
           <Route path="/behaviour-change" element={<BehaviourChangePage />} />
+          <Route path="/compliance" element={<AchievementsPage />} />
 
 
 
