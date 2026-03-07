@@ -21,6 +21,13 @@ import Impact from "@/pages/impact/Impact";
 import OrganicPage from "@/pages/initiatives/OrganicPage";
 import SocialPage from "@/pages/initiatives/SocialPage";
 import AllAchievements from "@/pages/home/sections/AwardsAndCTA/AllAchievements";
+import PlasticRecyclingPage from "@/pages/whatwedo/PlasticRecyclingPage";
+import OrganicWastePage from "@/pages/whatwedo/OrganicWastePage";
+import EWastePage from "@/pages/whatwedo/EWastePage";
+import WasteToWealthPage from "@/pages/whatwedo/WasteToWealthPage";
+import BhopalModelPage from "@/pages/whatwedo/BhopalModelPage";
+import ZeroWasteCampusPage from "@/pages/whatwedo/ZeroWasteCampusPage";
+import BehaviourChangePage from "@/pages/whatwedo/BehaviourChangePage";
 
 
 const App = () => {
@@ -39,7 +46,7 @@ const App = () => {
           <Route path="/initiatives/carcass" element={<PlasticWaste />} />
           <Route path="/initiatives/narmada" element={<PlasticWaste />} />
           <Route path="/impact" element={<Impact />} />
-          <Route path="/impact/karmis" element={<SarthakKarmis />} />
+          <Route path="karmis" element={<SarthakKarmis />} />
           <Route path="/impact/stories" element={<SuccessStories />} />
           <Route path="/awards" element={<Awards />} />
           <Route path="/gallery" element={<Gallery />} />
@@ -49,7 +56,18 @@ const App = () => {
           <Route path="/initiatives" element={<Initiatives />} />
           <Route path="/initiatives/organic" element={<OrganicPage />} />
           <Route path="/initiatives/social" element={<SocialPage />} />
-           <Route path="/achievements" element={<AllAchievements />} />
+          <Route path="/achievements" element={<AllAchievements />} />
+          <Route path="/plastic-recycling" element={<PlasticRecyclingPage />} />
+          <Route path="/organic-waste" element={<OrganicWastePage />} />
+          <Route path="/e-waste" element={<EWastePage />} />
+          <Route path="/waste-to-wealth" element={<WasteToWealthPage />} />
+          <Route path="/bhopal-model" element={<BhopalModelPage />} />
+          <Route path="/zero-waste-campus" element={<ZeroWasteCampusPage />} />
+          <Route path="/behaviour-change" element={<BehaviourChangePage />} />
+
+
+
+
 
         </Route>
 
