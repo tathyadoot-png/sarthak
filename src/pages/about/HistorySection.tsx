@@ -1,9 +1,10 @@
+"use client";
+
 import { useRef, useEffect } from "react";
 import { Sparkles, Calendar, ArrowRight, History as HistoryIcon } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import type { Lang } from "@/layouts/MainLayout";
-import SectionHeading from "@/components/ui/SectionHeading/SectionHeading";
 import { useOutletContext } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -51,7 +52,6 @@ const HistorySection = () => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      // 1. DESKTOP & TABLET (Horizontal Scroll)
       mm.add("(min-width: 768px)", () => {
         const scrollWidth = sectionRef.current?.scrollWidth || 0;
         const amountToScroll = scrollWidth - window.innerWidth;
@@ -81,7 +81,6 @@ const HistorySection = () => {
         });
       });
 
-      // 2. MOBILE (Vertical Timeline)
       mm.add("(max-width: 767px)", () => {
         gsap.to(".history-mobile-line", {
           height: "100%",
@@ -93,23 +92,6 @@ const HistorySection = () => {
             scrub: 0.5,
           },
         });
-
-        const cards = gsap.utils.toArray(".history-mobile-card");
-        cards.forEach((card: any) => {
-          gsap.to(card, {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1.2,
-            ease: "power4.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              end: "top 60%",
-              scrub: 1,
-            }
-          });
-        });
       });
     }, triggerRef);
 
@@ -117,94 +99,94 @@ const HistorySection = () => {
   }, []);
 
   return (
-    <div ref={triggerRef} className="bg-bg">
+    <div ref={triggerRef} className="bg-[#f7f7f6]">
       <div className="min-h-screen md:h-screen flex flex-col overflow-hidden relative">
         
-        {/* Progress Line */}
-        <div className="absolute top-0 left-0 h-1 bg-primary/20 w-full z-50">
-          <div ref={progressBarRef} className="h-full bg-primary w-0 shadow-[0_0_10px_rgba(228,107,46,0.5)] md:block hidden transition-all" />
+        {/* Progress Line - Yellow (#FFBF00) */}
+        <div className="absolute top-0 left-0 h-1.5 bg-[#3e2723]/5 w-full z-50">
+          <div ref={progressBarRef} className="h-full bg-[#FFBF00] w-0 shadow-[0_0_15px_rgba(255,191,0,0.4)] md:block hidden" />
         </div>
 
-        {/* Heading */}
-        <div className="md:pt-12 lg:pt-3">
-          <SectionHeading
-            subtitle={isHi ? "25 वर्षों का गौरवशाली सफर" : "25 Years of Impactful Service"}
-            titleMain={isHi ? "सार्थक की" : "Our"}
-            titleGradient={isHi ? "विकास यात्रा" : "Evolution"}
-            isHi={isHi}
-          />
+        {/* Heading Section */}
+        <div className="pt-20 md:pt-24 px-6 md:px-24">
+            <h6 className="text-[#FFBF00] text-[10px] font-black uppercase tracking-[0.4em] mb-4">
+               {isHi ? "25 वर्षों का गौरवशाली सफर" : "25 YEARS OF IMPACTFUL SERVICE"}
+            </h6>
+            <h2 className="text-4xl md:text-7xl font-[1000] text-[#3e2723] uppercase tracking-tighter leading-none">
+              {isHi ? "सार्थक की" : "OUR"} <br />
+              <span className="text-[#3e2723]/30">{isHi ? "विकास यात्रा" : "EVOLUTION"}</span>
+            </h2>
         </div>
 
         {/* Desktop View (Horizontal) */}
-        <div ref={sectionRef} className="hidden md:flex items-center pl-24 pr-[40vw] gap-24 whitespace-nowrap flex-grow -mt-10 lg:mt-0">
+        <div ref={sectionRef} className="hidden md:flex items-center pl-24 pr-[40vw] gap-32 whitespace-nowrap flex-grow">
           {historyTimeline.map((item, index) => (
-            <div key={index} className="relative flex-shrink-0 w-[500px]">
-              {/* Ghost Year Text */}
-              <div className="absolute -top-36 -left-6 text-[10rem] font-black opacity-[0.05] font-gotu text-secondary select-none pointer-events-none">
+            <div key={index} className="relative flex-shrink-0 w-[550px]">
+              {/* Giant Background Year Text */}
+              <div className="absolute -top-44 -left-10 text-[12rem] font-[1000] opacity-[0.03] text-[#3e2723] select-none pointer-events-none tracking-tighter">
                 {item.year}
               </div>
+              
               <div className="relative z-10">
-                <div className="h-[380px] w-full rounded-[3.5rem] overflow-hidden shadow-soft border-4 border-white relative group">
-                  <img src={item.img} alt={item.title} className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-secondary/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6 bg-white shadow-xl px-6 py-2 rounded-2xl border border-border">
-                    <span className="text-primary font-black text-xl font-gotu">{item.year}</span>
+                <div className="h-[420px] w-full rounded-[3rem] overflow-hidden shadow-2xl border-[6px] border-white relative group">
+                  <img src={item.img} alt={item.title} className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#3e2723]/80 via-transparent to-transparent opacity-60" />
+                  
+                  {/* Floating Year Badge */}
+                  <div className="absolute bottom-8 left-8 bg-[#FFBF00] shadow-xl px-8 py-3 rounded-2xl">
+                    <span className="text-[#3e2723] font-black text-2xl tracking-tighter">{item.year}</span>
                   </div>
                 </div>
-                <div className="mt-8 space-y-4 px-4 whitespace-normal">
-                  <div className="flex items-center gap-3">
-                    <div className="w-1.5 h-8 bg-primary rounded-full" />
-                    <h3 className="text-3xl font-bold text-secondary font-gotu leading-tight">{item.title}</h3>
+
+                <div className="mt-10 space-y-4 px-2 whitespace-normal">
+                  <div className="flex items-center gap-4">
+                    <div className="w-2 h-10 bg-[#FFBF00] rounded-full" />
+                    <h3 className="text-3xl font-[1000] text-[#3e2723] uppercase tracking-tighter">{item.title}</h3>
                   </div>
-                  <p className="text-muted text-base text-justify font-medium opacity-80 leading-relaxed">{item.desc}</p>
+                  <p className="text-[#3e2723]/70 text-lg font-bold leading-relaxed max-w-lg">
+                    {item.desc}
+                  </p>
                 </div>
               </div>
             </div>
           ))}
 
           {/* Cinematic End (Desktop) */}
-          <div className="flex-shrink-0 w-[500px] pr-32 flex flex-col items-start justify-center">
-            <div className="space-y-6">
-              <Sparkles className="text-primary opacity-50" size={50} />
-              <h2 className="text-4xl font-gotu font-bold text-secondary leading-[1.2]">
-                {isHi ? "मिशन अभी जारी है," : "The mission continues,"} <br />
-                <span className="text-primary">{isHi ? "स्वच्छता की ओर।" : "towards a greener future."}</span>
+          <div className="flex-shrink-0 w-[600px] pr-32 flex flex-col items-start justify-center">
+            <div className="space-y-8 bg-white/50 p-12 rounded-[4rem] border border-white">
+              <Sparkles className="text-[#FFBF00]" size={60} />
+              <h2 className="text-5xl font-[1000] text-[#3e2723] uppercase tracking-tighter leading-[0.9]">
+                {isHi ? "मिशन अभी जारी है," : "THE MISSION"} <br />
+                <span className="text-[#3e2723]/30">{isHi ? "स्वच्छता की ओर।" : "CONTINUES."}</span>
               </h2>
+              <p className="text-xs font-black uppercase tracking-widest text-[#3e2723]/40 italic">
+                {isHi ? "एक बेहतर कल की ओर अग्रसर" : "Marching towards a circular future"}
+              </p>
             </div>
           </div>
         </div>
 
         {/* Mobile View (Vertical Storyline) */}
-        <div className="mobile-history-container md:hidden flex flex-col px-4 gap-16 pt-8 pb-20 relative overflow-hidden">
-          {/* Vertical Line */}
-          <div className="absolute left-1/2 top-0 bottom-20 w-[2px] bg-primary/10 -translate-x-1/2">
-            <div className="history-mobile-line w-full h-0 bg-gradient-to-b from-primary via-secondary to-transparent origin-top" />
+        <div className="mobile-history-container md:hidden flex flex-col px-6 gap-20 pt-12 pb-32 relative">
+          <div className="absolute left-8 top-0 bottom-20 w-[2px] bg-[#3e2723]/5">
+            <div className="history-mobile-line w-full h-0 bg-[#FFBF00]" />
           </div>
 
           {historyTimeline.map((item, index) => (
-            <div key={index} className="history-mobile-card relative w-full opacity-0 translate-y-10 scale-95">
-              <div className="absolute left-1/2 -top-2 -translate-x-1/2 z-20">
-                <div className="w-4 h-4 rounded-full bg-white border-2 border-primary relative">
-                  <div className="absolute inset-0 rounded-full bg-primary animate-ping opacity-20" />
-                </div>
-              </div>
+            <div key={index} className="history-mobile-card relative pl-12">
+              <div className="absolute left-[30px] top-2 w-3 h-3 rounded-full bg-[#FFBF00] -translate-x-1/2 shadow-[0_0_10px_#FFBF00]" />
               
-              <div className="pt-8">
-                <div className="flex justify-center mb-[-20px] relative z-20">
-                  <span className="bg-bg px-4 py-1 text-secondary/30 font-black text-5xl font-gotu italic">
-                    {item.year}
-                  </span>
-                </div>
-                
-                <div className="bg-white/80 backdrop-blur-md rounded-[3rem] p-4 border border-white/60 shadow-xl relative z-10">
-                  <div className="rounded-[2.5rem] overflow-hidden aspect-[4/3] relative">
+              <div className="space-y-6">
+                <span className="text-6xl font-[1000] text-[#3e2723]/10 absolute -top-4 left-10">
+                  {item.year}
+                </span>
+                <div className="bg-white rounded-[2.5rem] p-4 shadow-xl border border-white/50 relative z-10">
+                  <div className="rounded-[2rem] overflow-hidden aspect-video">
                     <img src={item.img} className="w-full h-full object-cover" alt={item.title} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/50 via-transparent to-transparent" />
                   </div>
-
-                  <div className="mt-6 px-4 pb-4 text-center">
-                    <h3 className="text-2xl font-bold text-secondary font-gotu mb-3">{item.title}</h3>
-                    <p className="text-sm text-muted leading-relaxed">{item.desc}</p>
+                  <div className="p-6">
+                    <h3 className="text-2xl font-black text-[#3e2723] uppercase tracking-tighter mb-3">{item.title}</h3>
+                    <p className="text-sm font-bold text-[#3e2723]/60 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               </div>
