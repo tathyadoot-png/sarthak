@@ -1,157 +1,131 @@
+"use client";
+
+import React from 'react';
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin, Facebook, Instagram, Youtube, Heart } from "lucide-react";
-import logo from "@/assets/logo.png";
-import type { Lang } from "@/layouts/MainLayout";
+import { ArrowUpRight, Mail, MapPin, Facebook, Instagram, Youtube, Heart, Phone } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const Footer = ({ lang }: { lang: Lang }) => {
+// Logo path as per your setup
+import logo from "@/assets/logo.png";
+
+const Footer: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
   const isHi = lang === "hi";
   const navigate = useNavigate();
 
   const navLinks = [
-    { en: "Impact", hi: "हमारा प्रभाव", path: "/impact" },
+    { en: "Impact", hi: "प्रभाव", path: "/impact" },
     { en: "Projects", hi: "परियोजनाएं", path: "/projects" },
-    { en: "Our Team", hi: "हमारी टीम", path: "/team" },
+    { en: "Our Team", hi: "टीम", path: "/team" },
     { en: "Media", hi: "मीडिया", path: "/media" },
   ];
 
-  const policyLinks = [
-    { en: "Privacy Policy", hi: "गोपनीयता नीति" },
-    { en: "80G Status", hi: "80G स्थिति" },
-    { en: "Reports", hi: "रिपोर्ट्स" },
-  ];
-
   return (
-    <footer className="relative w-full bg-slate-900 text-white pt-24 pb-10 overflow-hidden">
-      
-      {/* --- DESIGN ACCENTS --- */}
-      <div className="absolute top-0 left-0 w-full h-1 flex">
-        <div className="flex-1 bg-[#2b3291]" />
-        <div className="flex-1 bg-[#00a651]" />
-        <div className="flex-1 bg-[#fff200]" />
-        <div className="flex-1 bg-[#ed1c24]" />
-      </div>
-
-      <div className="mx-auto max-w-7xl px-6 relative z-10">
+    <footer className="w-full bg-[#3e2723] text-white border-t border-white/5 pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
           
-          {/* 1. BRAND SECTION */}
-          <div className="lg:col-span-5 space-y-10">
-            <div className="space-y-6">
-               <div className="inline-flex items-center gap-4 bg-white/5 p-3 rounded-2xl border border-white/10">
-                 <img src={logo} alt="Sarthak" className="h-12 w-auto bg-white rounded-full p-1" />
-                 <div className="pr-4">
-                    <h2 className="text-2xl font-black tracking-tighter leading-none italic">SARTHAK</h2>
-                    <p className="text-[#00a651] text-[8px] font-black uppercase tracking-widest">Samudayik Vikas Evam Jan Kalyan Sanstha</p>
-                 </div>
-               </div>
-               
-               <h3 className="text-3xl md:text-5xl font-black leading-[1.2] tracking-tight">
-                 {isHi ? (
-                   <>कचरे से <span className="text-[#00a651]">कंचन</span>,<br/>स्वच्छ भारत का <span className="text-[#2b3291]">नवनिर्माण</span>।</>
-                 ) : (
-                   <>Turning <span className="text-[#00a651]">Waste</span> to Wealth,<br/>for a <span className="text-[#2b3291]">Sustainable</span> Future.</>
-                 )}
-               </h3>
+          {/* 1. BRANDING & MISSION */}
+          <div className="md:col-span-4 space-y-6">
+            <div className="flex items-center gap-3">
+              <img src={logo} alt="Sarthak" className="h-12 w-auto brightness-0 invert" />
+              <div>
+                <h2 className="text-2xl font-black tracking-tighter italic leading-none">SARTHAK</h2>
+                <p className="text-[#FFBF00] text-[8px] font-black uppercase tracking-[0.3em] mt-1">Samudayik Vikas Sanstha</p>
+              </div>
             </div>
+            
+            <p className="text-sm text-white/60 font-medium leading-relaxed max-w-sm">
+              {isHi 
+                ? "सार्थक एक समर्पित NGO है जो पूरे भारत में कचरा प्रबंधन की दिशा में काम कर रहा है। हमारा मानना है कि कचरा सिर्फ एक गलत जगह रखा संसाधन है।" 
+                : "Sarthak is a dedicated NGO working towards systemic changes in waste management across India. We believe waste is just a misplaced resource."}
+            </p>
 
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {[Facebook, Instagram, Youtube].map((Icon, i) => (
-                <motion.a 
-                  whileHover={{ y: -5, color: "#fff" }}
-                  key={i} href="#" 
-                  className="h-12 w-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white/70 transition-all"
-                >
-                  <Icon size={20} />
-                </motion.a>
+                <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FFBF00] hover:text-[#3e2723] transition-all duration-300">
+                  <Icon size={18} />
+                </a>
               ))}
             </div>
           </div>
 
-          {/* 2. QUICK LINKS GRID */}
-          <div className="lg:col-span-4 grid grid-cols-2 gap-8">
-            <div className="space-y-8">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/70">
-                {isHi ? "नेविगेट करें" : "Explore"}
-              </h4>
+          {/* 2. QUICK LINKS */}
+          <div className="md:col-span-4 grid grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#FFBF00]">
+                {isHi ? "नेविगेशन" : "Navigation"}
+              </p>
               <ul className="space-y-4">
                 {navLinks.map((item) => (
                   <li 
                     key={item.en} 
-                    onClick={() => navigate(item.path)}
-                    className="text-sm font-bold text-white/70 hover:text-white cursor-pointer transition-all flex items-center gap-2 group"
+                    onClick={() => navigate(item.path)} 
+                    className="text-sm font-bold text-white/50 hover:text-white cursor-pointer transition-colors flex items-center gap-2 group"
                   >
-                    <div className="h-1 w-0 bg-[#00a651] group-hover:w-3 transition-all" />
+                    <span className="w-0 group-hover:w-2 h-[2px] bg-[#FFBF00] transition-all" />
                     {isHi ? item.hi : item.en}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="space-y-8">
-              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/70">
-                {isHi ? "महत्वपूर्ण नीतियां" : "Policies"}
-              </h4>
-              <ul className="space-y-4 text-sm font-bold text-white/70">
-                {policyLinks.map((policy) => (
-                   <li key={policy.en} className="hover:text-white cursor-pointer transition-all">
-                      {isHi ? policy.hi : policy.en}
-                   </li>
-                ))}
+
+            <div className="space-y-6">
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#FFBF00]">
+                {isHi ? "कानूनी" : "Legal"}
+              </p>
+              <ul className="space-y-4 text-sm font-bold text-white/50">
+                <li className="hover:text-white cursor-pointer transition-colors">80G Status</li>
+                <li className="hover:text-white cursor-pointer transition-colors">Privacy Policy</li>
+                <li className="hover:text-white cursor-pointer transition-colors">Terms of Service</li>
               </ul>
             </div>
           </div>
 
           {/* 3. CONTACT & ACTION */}
-          <div className="lg:col-span-3 space-y-8">
-             <div className="p-8 rounded-[2.5rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 space-y-6">
-                <div className="space-y-4">
-                  <div className="flex gap-4 items-start">
-                    <MapPin size={18} className="text-[#00a651] mt-1 shrink-0" />
-                    <p className="text-xs font-bold text-white/70 leading-relaxed italic">
-                      {isHi ? "भोपाल, मध्य प्रदेश - 462039" : "Bhopal, Madhya Pradesh - 462039"}
-                    </p>
-                  </div>
-                  <div className="flex gap-4 items-center">
-                    <Mail size={18} className="text-[#2b3291] shrink-0" />
-                    <p className="text-xs font-bold text-white/70">sarthakbpl10@gmail.com </p>
-                  </div>
+          <div className="md:col-span-4 space-y-8">
+            <div className="space-y-6">
+              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#FFBF00]">
+                {isHi ? "संपर्क करें" : "Contact Us"}
+              </p>
+              <div className="space-y-4">
+                <div className="flex gap-4 items-start">
+                  <MapPin size={18} className="text-[#FFBF00] shrink-0" />
+                  <span className="text-sm font-bold text-white/80 leading-tight italic">Bhopal, Madhya Pradesh - 462039, India</span>
                 </div>
+                <div className="flex gap-4 items-center">
+                  <Mail size={18} className="text-[#FFBF00] shrink-0" />
+                  <span className="text-sm font-bold text-white/80 italic">sarthakbpl10@gmail.com</span>
+                </div>
+                <div className="flex gap-4 items-center">
+                  <Phone size={18} className="text-[#FFBF00] shrink-0" />
+                  <span className="text-sm font-bold text-white/80 italic">+91 (755) 2345-078</span>
+                </div>
+              </div>
+            </div>
 
-                <motion.button 
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => navigate("/donate")}  
-                  className="w-full py-4 bg-[#00a651] rounded-2xl text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#008a44] transition-all shadow-lg shadow-green-900/20"
-                >
-                  {isHi ? "सहयोग प्रदान करें" : "Donate Now"} <Heart size={14} className="fill-current" />
-                </motion.button>
-             </div>
+            <button 
+              onClick={() => navigate("/donate")}
+              className="w-full py-4 bg-[#FFBF00] text-[#3e2723] rounded-xl text-[11px] font-[1000] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-white transition-all shadow-xl"
+            >
+              {isHi ? "सहयोग दें" : "DONATE NOW"} <Heart size={14} fill="currentColor" />
+            </button>
           </div>
-
         </div>
 
-        {/* --- BOTTOM SECTION --- */}
-        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-6">
-            <p className="text-[10px] font-black text-white/20 uppercase tracking-widest">
-              © 2026 Sarthak India
-            </p>
-            <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 flex items-center gap-2">
-               <div className="h-1.5 w-1.5 rounded-full bg-[#fff200] animate-pulse" />
-               <span className="text-[8px] font-black text-white/40 uppercase tracking-widest italic">
-                 {isHi ? "पंजीकृत एनजीओ" : "Registered NGO"}
-               </span>
-            </div>
+        {/* BOTTOM COPYRIGHT */}
+        <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-[9px] font-black uppercase tracking-[0.3em] text-white/30 text-center md:text-left">
+            © 2026 Sarthak Samudayik Vikas Sanstha • ALL RIGHTS RESERVED
           </div>
-
-          <a href="https://inedco.com" target="_blank" rel="noreferrer" className="flex items-center gap-4 group">
-             <div className="text-right">
-                <p className="text-[8px] font-black text-white/20 uppercase leading-none">Powered by</p>
-                <p className="text-xs font-black text-white/80 group-hover:text-[#2b3291] transition-colors tracking-tighter">INEDCO NETWORKS</p>
-             </div>
-             <div className="h-10 w-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:rotate-45 transition-all group-hover:bg-white group-hover:text-black">
-                <ArrowUpRight size={16} />
-             </div>
+          
+          <a 
+            href="https://inedco.com" 
+            target="_blank" 
+            className="flex items-center gap-2 group text-[9px] font-black uppercase tracking-[0.3em] text-white/30 hover:text-[#FFBF00] transition-colors"
+          >
+            <span>Powered by Inedco</span>
+            <ArrowUpRight size={14} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
       </div>

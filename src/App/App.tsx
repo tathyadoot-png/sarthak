@@ -20,6 +20,8 @@ import Initiatives from "@/pages/initiatives/Initiatives";
 import Impact from "@/pages/impact/Impact";
 import OrganicPage from "@/pages/initiatives/OrganicPage";
 import SocialPage from "@/pages/initiatives/SocialPage";
+import AllAchievements from "@/pages/home/sections/AwardsAndCTA/AllAchievements";
+
 
 const App = () => {
   return (
@@ -47,6 +49,7 @@ const App = () => {
           <Route path="/initiatives" element={<Initiatives />} />
           <Route path="/initiatives/organic" element={<OrganicPage />} />
           <Route path="/initiatives/social" element={<SocialPage />} />
+           <Route path="/achievements" element={<AllAchievements />} />
 
         </Route>
 

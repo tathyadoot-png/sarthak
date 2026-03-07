@@ -14,6 +14,9 @@ import SarthakKarmi from "./sections/SarthakKarmi/SarthakKarmi";
 import FocusAndImpact from "./sections/FocusAndImpact/FocusAndImpact";
 import AwardsAndCTA from "./sections/AwardsAndCTA/AwardsAndCTA";
 import BhopalModel from "./sections/home/BhopalModel";
+import GlobalReach from "./sections/home/GlobalReach";
+import FinalCTA from "./sections/home/FinalCTA";
+import Initiatives from "./sections/home/Initiatives";
 
 const HomePage = () => {
   const { lang } = useOutletContext<{ lang: Lang }>();
@@ -24,11 +27,14 @@ const HomePage = () => {
         <HeroSection lang={lang} />
       </section>
       <AboutSection lang={lang} />
-      <FocusAndImpact lang={lang} />
+      <Initiatives lang={lang} />
+      <GlobalReach lang={lang} />
+      <FinalCTA lang={lang} />
+      {/* <FocusAndImpact lang={lang} />
       <BhopalModel  lang={lang}/>
       <Partners  lang={lang} />
       <SarthakKarmi lang={lang} />
-      <AwardsAndCTA lang={lang} />
+      <AwardsAndCTA lang={lang} /> */}
       
     </>
   );

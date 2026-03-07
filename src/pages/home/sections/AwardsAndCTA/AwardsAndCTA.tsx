@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { motion } from "framer-motion";
-import { Award, Heart, Users, Handshake, ArrowRight } from "lucide-react";
+import { Award, ExternalLink } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   lang: "hi" | "en";
@@ -10,118 +11,78 @@ interface Props {
 
 const AwardsAndCTA: React.FC<Props> = ({ lang }) => {
   const isHi = lang === "hi";
+  const navigate = useNavigate();
 
-  const awards = [
-    { year: "2021", title: "Swacch Nayak Samman", org: "District Collector Bhopal" },
-    { year: "2020", title: "CII Waste to Wealth Award", org: "CII National Level" },
-    { year: "2019", title: "Global Environment Facility", org: "Washington DC (USA)" },
-    { year: "2018", title: "3R Excellence Award", org: "Ministry of Housing & Urban Affairs" },
-    { year: "2018", title: "Swachhta Samman Award", org: "Govt. of Madhya Pradesh" },
-    { year: "2018", title: "Earth Care Awards", org: "JSW & Times of India" },
-    { year: "2017", title: "Earth Day Network Award", org: "USA" },
-    { year: "2008", title: "Sir Syed Award", org: "Bhopal" }
+  const awardCards = [
+    { 
+      year: "2021", 
+      title: isHi ? "स्वच्छ नायक सम्मान" : "Swacch Nayak Samman", 
+      org: isHi ? "जिला कलेक्टर भोपाल" : "District Collector Bhopal", 
+      image: "https://images.unsplash.com/photo-1579546647302-d830214f8a6d?q=80&w=600",
+    },
+    { 
+      year: "2021", 
+      title: isHi ? "स्वच्छता एंबेसडर" : "Swachhta Ambassador", 
+      org: "BMC", 
+      image: "https://images.unsplash.com/photo-1589156206699-bc21e38c8a7d?q=80&w=600", 
+    },
+    { 
+      year: "2020", 
+      title: isHi ? "वेस्ट टू वेल्थ अवार्ड" : "Waste to Wealth Award", 
+      org: "CII", 
+      image: "https://images.unsplash.com/photo-1523292562811-8fa7962a78c8?q=80&w=600", 
+    },
+    { 
+      year: "2020", 
+      title: isHi ? "अनहद सम्मान" : "Anhad Samman", 
+      org: "Towards Better India", 
+      image: "https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=600", 
+    }
   ];
 
   return (
-    <div className="w-full bg-slate-50 overflow-hidden">
-      
-      {/* 🔹 SECTION: AWARDS AUTO-SCROLLER */}
-      <section className="py-24 border-y border-slate-200 bg-white">
-        <div className="max-w-7xl mx-auto px-6 mb-12 flex justify-between items-end">
-          <div className="space-y-2">
-            <span className="text-emerald-600 text-[10px] font-black uppercase tracking-[0.4em]">
-              {isHi ? "उपलब्धियां" : "Recognition"}
-            </span>
-            <h3 className="text-4xl font-[1000] text-slate-950 tracking-tighter">
-               {isHi ? "वैश्विक सम्मान।" : "Global Recognition."}
-            </h3>
+    <div className="w-full bg-white font-sans">
+      <section className="py-24 max-w-7xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="max-w-xl space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-emerald-600 text-[10px] font-black uppercase tracking-[0.4em]">
+                {isHi ? "हमारी पहचान" : "Our Legacy"}
+              </span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-[1000] text-slate-900 tracking-tighter leading-[0.9] italic">
+              {isHi ? <>सम्मान जो <br/>बदलाव लाते हैं।</> : <>Honors that <br/>Define Us.</>}
+            </h2>
           </div>
-          <p className="text-slate-400 text-xs font-bold uppercase tracking-widest hidden md:block italic">
-            Celebrating Excellence since 2008
-          </p>
+          <button onClick={() => navigate("/achievements")} className="group flex items-center gap-3 px-6 py-3 border border-slate-200 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-slate-950 hover:text-white transition-all">
+            {isHi ? "सभी उपलब्धियां देखें" : "View All Achievements"} <ExternalLink size={14} className="group-hover:rotate-45 transition-transform" />
+          </button>
         </div>
 
-        {/* Infinite Marquee Loop */}
-        <div className="flex overflow-hidden select-none gap-6 relative before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-white after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-white">
-          <motion.div 
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ ease: "linear", duration: 30, repeat: Infinity }}
-            className="flex gap-6 whitespace-nowrap"
-          >
-            {[...awards, ...awards].map((award, idx) => (
-              <div 
-                key={idx} 
-                className="w-[300px] flex-shrink-0 p-8 rounded-[2rem] bg-slate-50 border border-slate-100 flex flex-col justify-between hover:border-emerald-500 transition-colors"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div className="h-10 w-10 rounded-xl bg-white shadow-sm flex items-center justify-center text-amber-500">
-                    <Award size={20} />
-                  </div>
-                  <span className="text-xs font-black text-slate-300 tracking-widest">{award.year}</span>
-                </div>
-                <div>
-                  <h4 className="text-sm font-black text-slate-950 uppercase leading-tight mb-1">{award.title}</h4>
-                  <p className="text-[9px] font-black text-emerald-600 uppercase tracking-widest">{award.org}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {awardCards.map((award, i) => (
+            <motion.div 
+              key={i}
+              whileHover={{ y: -10 }}
+              className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden group cursor-pointer shadow-xl shadow-slate-200"
+            >
+              <img src={award.image} alt={award.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+              <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                <div className="mb-4">
+                   <div className="h-10 w-10 rounded-xl bg-emerald-500 flex items-center justify-center text-white mb-4 scale-0 group-hover:scale-100 transition-transform duration-500">
+                      <Award size={20} />
+                   </div>
+                   <span className="text-emerald-400 text-[10px] font-black tracking-widest uppercase block mb-1">{award.year}</span>
+                   <h4 className="text-white text-lg font-black leading-tight uppercase tracking-tighter">{award.title}</h4>
+                   <p className="text-white/60 text-[10px] font-bold uppercase mt-1 tracking-wider">{award.org}</p>
                 </div>
               </div>
-            ))}
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </section>
-
-      {/* 🔹 SECTION: BENTO STYLE CTA */}
-      <section className="py-24 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          {/* Main Big Card */}
-          <div className="md:col-span-2 bg-slate-950 rounded-[3rem] p-10 md:p-16 text-white relative overflow-hidden flex flex-col justify-between min-h-[400px]">
-            <div className="relative z-10">
-              <h2 className="text-5xl md:text-7xl font-[1000] tracking-tighter leading-none mb-6">
-                {isHi ? "स्वच्छ भारत की नींव बनें।" : "Build the Future <br/> of Non-Plastic."}
-              </h2>
-              <p className="max-w-md text-slate-400 font-medium">
-                {isHi ? "चाहे आप स्वयंसेवक बनना चाहें या CSR साझेदारी—आपकी मदद परिवर्तन लाती है।" : "Every action fuels a cleaner, greener planet. Partner with us to scale the impact."}
-              </p>
-            </div>
-            
-            <div className="relative z-10 flex gap-4 mt-8">
-              <button className="px-8 py-4 bg-emerald-500 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center gap-3 hover:bg-emerald-400 transition-all">
-                {isHi ? "जुड़ें" : "Join Movement"} <ArrowRight size={16} />
-              </button>
-            </div>
-
-            {/* Background Decor */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-[100px] -mr-32 -mt-32" />
-          </div>
-
-          {/* Side Cards */}
-          <div className="flex flex-col gap-6">
-            <div className="flex-1 bg-white border border-slate-200 rounded-[3rem] p-8 flex flex-col justify-between hover:shadow-xl transition-all group">
-              <Heart className="text-rose-500 group-hover:scale-110 transition-transform" size={32} />
-              <div>
-                <h4 className="font-black text-xl text-slate-950 mb-2 uppercase tracking-tighter">{isHi ? "दान करें" : "Donate"}</h4>
-                <p className="text-xs text-slate-500 mb-6">Empower waste workers with health and safety gear.</p>
-                <button className="text-[10px] font-black uppercase text-emerald-600 tracking-widest flex items-center gap-2">
-                  Support Now <ArrowRight size={14} />
-                </button>
-              </div>
-            </div>
-
-            <div className="flex-1 bg-emerald-600 rounded-[3rem] p-8 text-white flex flex-col justify-between hover:bg-emerald-700 transition-all group">
-              <Users className="group-hover:scale-110 transition-transform" size={32} />
-              <div>
-                <h4 className="font-black text-xl mb-2 uppercase tracking-tighter">{isHi ? "स्वयंसेवक" : "Volunteer"}</h4>
-                <p className="text-emerald-100/70 text-xs mb-6">Join our field activities and awareness drives.</p>
-                <button className="text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
-                  Apply Today <ArrowRight size={14} />
-                </button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
     </div>
   );
 };
