@@ -8,6 +8,7 @@ import VisionMission from './VisionMission';
 import HistorySection from './HistorySection';
 import Governance from './Governance';
 import img1 from "@/assets/8.jpeg";
+import Organogram from './Organogram';
 
 const About = () => {
     const { lang } = useOutletContext<{ lang: "hi" | "en" }>();
@@ -137,9 +138,12 @@ const About = () => {
                         <VisionMission />
                     </section>
 
+ <Organogram/>
                     <section id="governance" className="scroll-mt-32 pb-20">
                         <Governance />
                     </section>
+
+                   
                 </div>
             </div>
         </div>

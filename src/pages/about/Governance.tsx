@@ -6,28 +6,71 @@ import { useOutletContext } from "react-router-dom";
 import { Users, ShieldCheck, Scale, Download, CheckCircle2, ExternalLink, Sparkles } from "lucide-react";
 
 const Governance = () => {
-  const { lang } = useOutletContext<{ lang: "hi" | "en" }>();
+  const context = useOutletContext<{ lang: "hi" | "en" }>() || { lang: "en" };
+  const { lang } = context;
   const isHi = lang === "hi";
 
   const leaders = [
     { 
+      name: "Dr. Brajeshwar Nath", 
+      role: isHi ? "अध्यक्ष (पूर्व एमडी, MPCON)" : "Chairman (Ex MD, MPCON)", 
+      bio: isHi ? "प्रबंधन और रणनीतिक नेतृत्व में व्यापक अनुभव।" : "Extensive experience in management and strategic leadership.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&h=500&auto=format&fit=crop"
+    },
+    { 
       name: "Mr. Imtiaz Ali", 
       role: isHi ? "संस्थापक एवं निदेशक" : "Founder & Director", 
       bio: isHi ? "ठोस अपशिष्ट प्रबंधन में 25+ वर्षों का अनुभव।" : "25+ years of expertise in SWM projects.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&h=500&auto=format&fit=crop"
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&h=500&auto=format&fit=crop"
+    },
+    { 
+      name: "Dr. Alok Ranjan Chowrasia", 
+      role: isHi ? "जनसांख्यिकी और सांख्यिकी विशेषज्ञ" : "Demographics & Statistics Expert", 
+      bio: isHi ? "50 से अधिक वर्षों का सांख्यिकीय अनुभव।" : "50+ years of experience in demographics and statistics.",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&h=500&auto=format&fit=crop"
+    },
+    { 
+      name: "Shri Satish Agrawal", 
+      role: isHi ? "आईटी विशेषज्ञ" : "IT Expert", 
+      bio: isHi ? "सूचना प्रौद्योगिकी में 25+ वर्षों का अनुभव।" : "25+ years of experience in Information Technology.",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&h=500&auto=format&fit=crop"
+    },
+    { 
+      name: "Dr. Yasin Khan", 
+      role: isHi ? "मृदा एवं जल संरक्षण विशेषज्ञ" : "Soil & Water Conservation Expert", 
+      bio: isHi ? "पर्यावरण संरक्षण में 50+ वर्षों का अनुभव।" : "50+ years of experience in soil and water conservation.",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&h=500&auto=format&fit=crop"
+    },
+    { 
+      name: "Dr. Anil Sarvaiya", 
+      role: isHi ? "कौशल एवं उद्यमिता विकास विशेषज्ञ" : "Skill & Entrepreneurship Expert", 
+      bio: isHi ? "कौशल विकास कार्यक्रमों के विशेषज्ञ।" : "Expert in skill development and entrepreneurship programs.",
+      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&h=500&auto=format&fit=crop"
+    },
+    { 
+      name: "Dr. Monika Jain", 
+      role: isHi ? "अनुसंधान एवं विकास विशेषज्ञ" : "R&D Expert", 
+      bio: isHi ? "अनुसंधान और विकास में 15+ वर्षों का अनुभव।" : "15+ years of experience in Research and Development.",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400&h=500&auto=format&fit=crop"
+    },
+    { 
+      name: "Mr. Sachin Dave", 
+      role: isHi ? "पर्यावरणविद्" : "Environmentalist", 
+      bio: isHi ? "पर्यावरण सुरक्षा और संरक्षण विशेषज्ञ।" : "Dedicated expert in environmental protection.",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&h=500&auto=format&fit=crop"
+    },
+    { 
+      name: "Shri Payoj Joshi", 
+      role: isHi ? "पूर्व इंजीनियर (AKVN)" : "Ex. Engineer (AKVN)", 
+      bio: isHi ? "औद्योगिक बुनियादी ढांचे के विशेषज्ञ।" : "Expert in industrial infrastructure and engineering.",
+      image: "https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=400&h=500&auto=format&fit=crop"
     },
     { 
       name: "Smt. Shagufta Ali", 
       role: isHi ? "अध्यक्ष" : "President", 
       bio: isHi ? "सामाजिक विकास कार्यक्रमों की विशेषज्ञ।" : "Expert in social development programs.",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&h=500&auto=format&fit=crop"
-    },
-    { 
-      name: "Team Sarthak", 
-      role: isHi ? "बोर्ड सदस्य" : "Board Members", 
-      bio: isHi ? "प्रोजेक्ट मैनेजमेंट में निपुण।" : "Skilled in project management.",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=400&h=500&auto=format&fit=crop"
-    },
+    }
   ];
 
   return (
@@ -83,40 +126,44 @@ const Governance = () => {
 
       {/* 🔹 LEADERSHIP SECTION */}
       <div className="mt-40">
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-4">
+        <div className="mb-16 text-center md:text-left">
+          <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
              <Sparkles size={16} className="text-[#FFBF00]" />
              <span className="text-[#3e2723]/40 font-black uppercase tracking-[0.3em] text-[10px]">The Minds Behind Sarthak</span>
           </div>
           <h3 className="text-4xl md:text-6xl font-[1000] text-[#3e2723] tracking-tighter uppercase leading-none">
-            {isHi ? "हमारा नेतृत्व" : "LEADERSHIP"}
+            {isHi ? "हमारा नेतृत्व" : "OUR LEADERSHIP"}
           </h3>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {leaders.map((member, idx) => (
-            <div key={idx} className="group">
-              <div className="relative aspect-[4/5] rounded-[3.5rem] overflow-hidden mb-8 bg-[#3e2723]/5 shadow-2xl transition-all duration-700 group-hover:-translate-y-2">
+            <motion.div 
+              key={idx} 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="group"
+            >
+              <div className="relative aspect-[4/5] rounded-[3.5rem] overflow-hidden mb-8 bg-[#3e2723]/5 shadow-2xl transition-all duration-700 group-hover:-translate-y-2 border border-[#3e2723]/5">
                 <img src={member.image} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" alt={member.name} />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#3e2723] via-[#3e2723]/20 to-transparent opacity-0 group-hover:opacity-90 transition-all duration-500 flex flex-col justify-end p-10">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#3e2723] via-[#3e2723]/40 to-transparent opacity-0 group-hover:opacity-90 transition-all duration-500 flex flex-col justify-end p-10">
                   <p className="text-white text-sm font-bold leading-relaxed">{member.bio}</p>
                 </div>
               </div>
               <h5 className="text-2xl font-[1000] text-[#3e2723] tracking-tighter uppercase italic">{member.name}</h5>
               <p className="text-[#FFBF00] font-black text-[10px] uppercase mt-2 tracking-[0.2em]">{member.role}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
 
-      {/* 🔹 COMPLIANCE SECTION */}
+      {/* 🔹 COMPLIANCE SECTION - Keeping your existing clean layout */}
       <div className="mt-40">
         <div className="relative bg-[#3e2723] rounded-[4rem] p-8 md:p-20 overflow-hidden shadow-2xl">
-          {/* Decorative Mesh */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFBF00]/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
-            
             <div className="lg:col-span-7 space-y-10">
               <div>
                 <span className="inline-block px-4 py-1 rounded-full bg-[#FFBF00]/20 text-[#FFBF00] font-black text-[9px] uppercase tracking-widest mb-6">Transparency First</span>
@@ -127,9 +174,7 @@ const Governance = () => {
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  "80G Registered", "12A Certified", "CSR-1 Registered", "FCRA Compliant"
-                ].map((cert, i) => (
+                {["80G Registered", "12A Certified", "CSR-1 Registered", "FCRA Compliant"].map((cert, i) => (
                   <div key={i} className="flex items-center gap-4 p-6 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm group hover:bg-[#FFBF00]/10 transition-colors">
                     <CheckCircle2 className="text-[#FFBF00] shrink-0" size={24} />
                     <span className="text-[12px] font-black uppercase tracking-tighter text-white/90">{cert}</span>
@@ -154,7 +199,6 @@ const Governance = () => {
                 </button>
               </div>
             </div>
-
           </div>
         </div>
       </div>
