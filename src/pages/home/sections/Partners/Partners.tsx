@@ -34,31 +34,29 @@ const PartnersPage = () => {
   ];
 
   // 🌿 EXACTLY 16 Green Partners (Hardcoded for easy editing)
-  const greenPartners = [
-    // ROW 1
-    { id: 1, name: "Partner 1", logo: "/logos/green-1.png" },
-    { id: 2, name: "Partner 2", logo: "/logos/green-2.png" },
-    { id: 3, name: "Partner 3", logo: "/logos/green-3.png" },
-    { id: 4, name: "Partner 4", logo: "/logos/green-4.png" },
-    { id: 5, name: "Partner 5", logo: "/logos/green-5.png" },
-    { id: 6, name: "Partner 6", logo: "/logos/green-6.png" },
-    { id: 7, name: "Partner 7", logo: "/logos/green-7.png" },
-    { id: 8, name: "Partner 8", logo: "/logos/green-8.png" },
-    // ROW 2
-    { id: 9, name: "Partner 9", logo: "/logos/green-9.png" },
-    { id: 10, name: "Partner 10", logo: "/logos/green-10.png" },
-    { id: 11, name: "Partner 11", logo: "/logos/green-11.png" },
-    { id: 12, name: "Partner 12", logo: "/logos/green-12.png" },
-    { id: 13, name: "Partner 13", logo: "/logos/green-13.png" },
-    { id: 14, name: "Partner 14", logo: "/logos/green-14.png" },
-    { id: 15, name: "Partner 15", logo: "/logos/green-15.png" },
-    { id: 16, name: "Partner 16", logo: "/logos/green-16.png" },
-  ];
+const greenPartners = [
+  { id: 1, name: "Partner 1", logo: "/partners/g1.jfif" },
+  { id: 2, name: "Partner 2", logo: "/partners/g.jfif" },
+  { id: 3, name: "Partner 3", logo: "/partners/gg.png" },
+  { id: 4, name: "Partner 4", logo: "/partners/g5.jfif" },
+  { id: 5, name: "Partner 5", logo: "/partners/g18.jfif" },
+  { id: 6, name: "Partner 6", logo: "/partners/g7.jfif" },
+  { id: 7, name: "Partner 7", logo: "/partners/g6.jfif" },
+  { id: 8, name: "Partner 8", logo: "/partners/g16.jfif" },
+
+  { id: 9, name: "Partner 9", logo: "/partners/g10.png" },
+  { id: 10, name: "Partner 10", logo: "/partners/g3.jfif" },
+  { id: 11, name: "Partner 11", logo: "/partners/g17.png" },
+  { id: 12, name: "Partner 12", logo: "/partners/g4.jfif" },
+  { id: 13, name: "Partner 13", logo: "/partners/g2.png" },
+  { id: 14, name: "Partner 14", logo: "/partners/g9.png" },
+
+];
 
   const knowledgePartners = [
-    { id: 1, name: "EPCO", role: "Environmental Planning", img: "/logos/epco.png" },
-    { id: 2, name: "CEE", role: "Environment Education", img: "/logos/cee.png" },
-    { id: 3, name: "UN-Habitat", role: "Technical Partner", img: "/logos/un-habitat.png" },
+    { id: 1, name: "BSSS", role: "Knowledge Planning", img: "/partners/g8.jfif" },
+    { id: 2, name: "IISER", role: "Knowledge Education", img: "/partners/g14.png" },
+    { id: 3, name: "IISER Kolkata", role: "Knowledge Partner", img: "/partners/g15.png" },
   ];
 
   return (
@@ -120,24 +118,30 @@ const PartnersPage = () => {
       </section>
 
       {/* 3. GREEN PARTNERS (Exactly 16 Cards) */}
+ {/* 3. GREEN PARTNERS (Exactly 16 Cards) */}
       <section className="px-6 md:px-14 max-w-7xl mx-auto mb-40">
         <div className="flex items-center gap-4 mb-12 text-center md:text-left">
-            <Leaf className="text-[#FFBF00]" size={24} />
+            <div className="p-2 bg-[#FFBF00]/10 rounded-lg">
+              <Leaf className="text-[#FFBF00]" size={24} />
+            </div>
             <h2 className="text-3xl md:text-5xl font-[1000] text-[#3e2723] uppercase tracking-tighter italic">
                 {isHi ? "ग्रीन पार्टनर्स" : "GREEN PARTNERS"}
             </h2>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+
+        {/* Grid fix: Mobile par 2 column, Tablet par 4, Laptop par 8 */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
           {greenPartners.map((partner) => (
             <motion.div
               key={partner.id}
-              whileHover={{ scale: 1.05, borderColor: "#FFBF00" }}
-              className="aspect-square bg-white border border-[#3e2723]/5 rounded-3xl p-6 flex items-center justify-center group transition-all"
+              whileHover={{ y: -5, borderColor: "#FFBF00" }}
+              className="aspect-square bg-white border border-[#3e2723]/10 rounded-2xl md:rounded-3xl p-4 flex items-center justify-center group transition-all shadow-sm hover:shadow-xl hover:shadow-[#FFBF00]/10"
             >
               <img 
                 src={partner.logo} 
-                className="w-full h-full object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
+                className="w-full h-full object-contain transition-all duration-500 scale-90 group-hover:scale-100" 
                 alt={partner.name} 
+              
               />
             </motion.div>
           ))}
