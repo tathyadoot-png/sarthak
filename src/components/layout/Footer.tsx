@@ -4,8 +4,6 @@ import React from 'react';
 import { motion } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Facebook, Instagram, Youtube, Heart, Phone } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
-// Logo path as per your setup
 import logo from "@/assets/logo.png";
 
 const Footer: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {

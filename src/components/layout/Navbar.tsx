@@ -27,6 +27,7 @@ type Lang = "hi" | "en";
 const Navbar = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showMegaMenu, setShowMegaMenu] = useState(false);
+  const [isWorkOpen, setIsWorkOpen] = useState(false);
 
   const isHi = lang === "hi";
 
@@ -252,6 +253,169 @@ const Navbar = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) =
           </motion.div>
         )}
       </AnimatePresence>
+
+<AnimatePresence>
+  {isOpen && (
+    <>
+      {/* Backdrop */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setIsOpen(false)}
+        className="fixed inset-0 bg-black/60 z-[1999] xl:hidden backdrop-blur-sm"
+      />
+
+      <motion.div
+        initial={{ x: "100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "100%" }}
+        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+        className="fixed top-0 right-0 bottom-0 w-[85%] max-w-[350px] z-[2000] bg-white shadow-2xl flex flex-col overflow-y-auto xl:hidden"
+      >
+        {/* Header */}
+        <div className="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white z-10">
+          <div className="flex flex-col">
+            <span className="font-black text-xl text-[#3e2723] tracking-tighter uppercase">
+              {isHi ? "सार्थक" : "SARTHAK"}
+            </span>
+            <span className="text-[8px] font-bold text-[#FFBF00] uppercase tracking-widest">
+              {isHi ? "संस्था" : "Sanstha"}
+            </span>
+          </div>
+          <button 
+            onClick={() => setIsOpen(false)}
+            className="p-3 bg-gray-50 rounded-full text-[#3e2723] hover:bg-gray-100"
+          >
+            <Menu size={20} className="rotate-45" /> 
+          </button>
+        </div>
+
+        {/* Links Stack */}
+        <div className="flex flex-col p-6 gap-2">
+          <Link to="/" onClick={() => setIsOpen(false)} className="py-3 text-sm font-black uppercase tracking-widest text-[#3e2723] border-b border-gray-50">
+            {navLabels.home}
+          </Link>
+
+          <Link to="/about" onClick={() => setIsOpen(false)} className="py-3 text-sm font-black uppercase tracking-widest text-[#3e2723] border-b border-gray-50">
+            {navLabels.about}
+          </Link>
+
+          {/* --- WHAT WE DO (ACCORDION) --- */}
+          <div className="flex flex-col border-b border-gray-50">
+            <button 
+              onClick={() => setIsWorkOpen(!isWorkOpen)}
+              className="py-4 text-sm font-black uppercase tracking-widest text-[#3e2723] flex items-center justify-between"
+            >
+              {navLabels.work}
+              <ChevronDown size={18} className={`transition-transform duration-300 ${isWorkOpen ? "rotate-180 text-[#FFBF00]" : ""}`} />
+            </button>
+
+            <AnimatePresence>
+              {isWorkOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  className="overflow-hidden bg-gray-50/80 rounded-2xl mb-4"
+                >
+                  <div className="p-5 flex flex-col gap-8">
+                    {/* 1. Waste Solutions (4 Items) */}
+                    <div>
+                      <p className="text-[9px] font-black text-[#FFBF00] mb-4 uppercase tracking-[0.2em]">Waste Solutions</p>
+                      <div className="grid gap-4">
+                        {megaMenu.wasteSolutions.map((item) => (
+                          <Link key={item.label} to={item.href} onClick={() => setIsOpen(false)} className="flex items-start gap-3">
+                            <span className="text-[#FFBF00] mt-0.5">{item.icon}</span>
+                            <div className="flex flex-col">
+                              <span className="text-[11px] font-bold text-[#3e2723] uppercase">{item.label}</span>
+                              <span className="text-[9px] text-gray-500 font-medium">{item.desc}</span>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* 2. Models (4 Items) */}
+                    <div>
+                      <p className="text-[9px] font-black text-[#FFBF00] mb-4 uppercase tracking-[0.2em]">Our Models</p>
+                      <div className="grid gap-4">
+                        {megaMenu.models.map((item) => (
+                          <Link key={item.label} to={item.href} onClick={() => setIsOpen(false)} className="flex items-center gap-3">
+                            <span className="text-[#FFBF00]">{item.icon}</span>
+                            <span className="text-[11px] font-bold text-[#3e2723] uppercase">{item.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* 3. Impact (3 Items) */}
+                    <div>
+                      <p className="text-[9px] font-black text-[#FFBF00] mb-4 uppercase tracking-[0.2em]">Impact</p>
+                      <div className="grid gap-4">
+                        {megaMenu.impact.map((item) => (
+                          <Link key={item.label} to={item.href} onClick={() => setIsOpen(false)} className="flex items-center gap-3 text-[11px] font-bold text-[#3e2723] uppercase">
+                            <span className="text-[#FFBF00]">{item.icon}</span>
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* 4. Partnerships (2 Items) */}
+                    <div>
+                      <p className="text-[9px] font-black text-[#FFBF00] mb-4 uppercase tracking-[0.2em]">Trust & Partners</p>
+                      <div className="grid gap-4">
+                        {megaMenu.partnerships.map((item) => (
+                          <Link key={item.label} to={item.href} onClick={() => setIsOpen(false)} className="flex items-center gap-3 text-[11px] font-bold text-[#3e2723] uppercase">
+                            <span className="text-[#FFBF00]">{item.icon}</span>
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          <Link to="/impact" onClick={() => setIsOpen(false)} className="py-4 text-sm font-black uppercase tracking-widest text-[#3e2723] border-b border-gray-50">
+            {navLabels.impact}
+          </Link>
+
+          <Link to="/gallery" onClick={() => setIsOpen(false)} className="py-4 text-sm font-black uppercase tracking-widest text-[#3e2723] border-b border-gray-50">
+            {navLabels.gallery}
+          </Link>
+
+          <Link to="/contact" onClick={() => setIsOpen(false)} className="py-4 text-sm font-black uppercase tracking-widest text-[#3e2723] border-b border-gray-50">
+            {navLabels.contact}
+          </Link>
+        </div>
+
+        {/* Footer Actions */}
+        <div className="mt-auto p-6 border-t border-gray-100 bg-gray-50/50 space-y-4">
+          <button
+            onClick={() => { setLang(lang === "hi" ? "en" : "hi"); setIsOpen(false); }}
+            className="flex items-center justify-center gap-2 w-full py-3 border-2 border-[#FFBF00] rounded-xl text-[11px] font-black text-[#3e2723] uppercase"
+          >
+            <Globe size={14} />
+            {lang === "hi" ? "Switch to English" : "हिंदी में देखें"}
+          </button>
+
+          <Link
+            to="/partner"
+            onClick={() => setIsOpen(false)}
+            className="block w-full bg-[#FFBF00] text-[#3e2723] py-4 rounded-xl text-center text-xs font-black uppercase tracking-widest shadow-xl shadow-[#FFBF00]/20"
+          >
+            {navLabels.join}
+          </Link>
+        </div>
+      </motion.div>
+    </>
+  )}
+</AnimatePresence>
+
     </header>
   );
 };
