@@ -129,16 +129,16 @@ const Navbar = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) =
       className="fixed w-full z-[1000] py-3 bg-white shadow-sm border-b border-slate-100"
       onMouseLeave={() => setShowMegaMenu(false)}
     >
-      <nav className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-4 md:px-12 flex items-center justify-between">
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <img src={logo} alt="Sarthak" className="h-10 w-10 md:h-12 md:w-12" />
+          <img src={logo} alt="Sarthak" className="h-12 w-12 md:h-12 md:w-12" />
           <div className="flex flex-col">
             <h1 className="font-black text-lg md:text-xl tracking-tighter text-[#3e2723] uppercase group-hover:text-[#FFBF00]">
               {isHi ? "सार्थक" : "SARTHAK"}
             </h1>
-            <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#FFBF00]">
+            <span className="text-[12px] font-bold uppercase tracking-[0.2em] text-green -mt-1">
               {isHi ? "संस्था" : "Sanstha"}
             </span>
           </div>
@@ -149,21 +149,21 @@ const Navbar = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) =
 
           <Link
             to="/"
-            className="text-[11px] font-black uppercase tracking-widest text-[#3e2723] hover:text-[#FFBF00]"
+            className="text-[12px] font-black uppercase tracking-widest text-[#3e2723] hover:text-[#FFBF00]"
           >
             {navLabels.home}
           </Link>
 
           <Link
             to="/about"
-            className="text-[11px] font-black uppercase tracking-widest text-[#3e2723] hover:text-[#FFBF00]"
+            className="text-[12px] font-black uppercase tracking-widest text-[#3e2723] hover:text-[#FFBF00]"
           >
             {navLabels.about}
           </Link>
 
           <button
             onMouseEnter={() => setShowMegaMenu(true)}
-            className="text-[11px] font-black uppercase tracking-widest text-[#3e2723] hover:text-[#FFBF00] flex items-center gap-1"
+            className="text-[12px] font-black uppercase tracking-widest text-[#3e2723] hover:text-[#FFBF00] flex items-center gap-1"
           >
             {navLabels.work}
             <ChevronDown size={14} />
@@ -171,21 +171,21 @@ const Navbar = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) =
 
           <Link
             to="/impact"
-            className="text-[11px] font-black uppercase tracking-widest text-[#3e2723] hover:text-[#FFBF00]"
+            className="text-[12px] font-black uppercase tracking-widest text-[#3e2723] hover:text-[#FFBF00]"
           >
             {navLabels.impact}
           </Link>
 
           <Link
             to="/gallery"
-            className="text-[11px] font-black uppercase tracking-widest text-[#3e2723] hover:text-[#FFBF00]"
+            className="text-[12px] font-black uppercase tracking-widest text-[#3e2723] hover:text-[#FFBF00]"
           >
             {navLabels.gallery}
           </Link>
 
           <Link
             to="/contact"
-            className="text-[11px] font-black uppercase tracking-widest text-[#3e2723] hover:text-[#FFBF00]"
+            className="text-[12px] font-black uppercase tracking-widest text-[#3e2723] hover:text-[#FFBF00]"
           >
             {navLabels.contact}
           </Link>
@@ -197,14 +197,14 @@ const Navbar = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) =
 
           <button
             onClick={() => setLang(lang === "hi" ? "en" : "hi")}
-            className="hidden sm:block text-[10px] font-black text-[#3e2723] border-b-2 border-[#FFBF00]"
+            className="hidden sm:block text-[12px] font-black text-[#3e2723] border-b-2 border-[#FFBF00]"
           >
             {lang === "hi" ? "English" : "हिंदी"}
           </button>
 
           <Link
             to="/partner"
-            className="bg-[#FFBF00] text-[#3e2723] px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#1c1716] hover:text-white transition-all"
+            className="bg-[#FFBF00] text-[#3e2723] px-6 py-2.5 rounded-full text-[12px] font-black uppercase tracking-widest hover:bg-[#1c1716] hover:text-white transition-all"
           >
             {navLabels.join}
           </Link>
