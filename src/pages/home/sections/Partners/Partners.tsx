@@ -5,7 +5,8 @@ import { motion, Variants } from "framer-motion";
 import { useOutletContext } from "react-router-dom";
 import { 
   Globe2, Landmark, ArrowUpRight, ShieldCheck, 
-  Handshake, Leaf, GraduationCap
+  Handshake, Leaf, GraduationCap, Building2, 
+  Factory, Users2, CheckCircle2, ClipboardCheck
 } from "lucide-react";
 
 interface ContextType {
@@ -26,6 +27,25 @@ const PartnersPage = () => {
     }
   };
 
+  const collabItems = [
+    { label: isHi ? "शहरी स्थानीय निकाय (ULBs)" : "Urban Local Bodies (ULBs)", icon: <Building2 size={20} /> },
+    { label: isHi ? "नगर निगम" : "Municipal Corporations", icon: <Landmark size={20} /> },
+    { label: isHi ? "उद्योग और विनिर्माण इकाइयाँ" : "Industries & Manufacturing", icon: <Factory size={20} /> },
+    { label: isHi ? "थोक कचरा उत्पादक (BWGs)" : "Bulk Waste Generators (BWGs)", icon: <ClipboardCheck size={20} /> },
+    { label: isHi ? "शैक्षणिक संस्थान" : "Educational Institutions", icon: <GraduationCap size={20} /> },
+    { label: isHi ? "सरकारी विभाग" : "Government Departments", icon: <Building2 size={20} /> },
+    { label: isHi ? "CSR और कॉर्पोरेट संस्थाएं" : "CSR & Corporate Entities", icon: <Handshake size={20} /> },
+  ];
+
+  const roles = [
+    { title: isHi ? "तकनीकी योजना" : "Technical Planning", desc: "Detailed project reports and blueprints." },
+    { title: isHi ? "बुनियादी ढांचे की तैनाती" : "Infrastructure Deployment", desc: "Setting up MRFs and processing units." },
+    { title: isHi ? "संचालन और प्रबंधन" : "Operations & Management", desc: "End-to-end waste lifecycle management." },
+    { title: isHi ? "क्षमता निर्माण" : "Capacity Building", desc: "Training and skill development for workers." },
+    { title: isHi ? "अनुपालन दस्तावेज़ीकरण" : "Compliance Documentation", desc: "Legal and environmental audit support." },
+    { title: isHi ? "निगरानी और रिपोर्टिंग" : "Monitoring & Reporting", desc: "Real-time impact tracking and data." },
+  ];
+
   const globalPartners = [
     { name: "UNDP", label: isHi ? "संयुक्त राष्ट्र विकास कार्यक्रम" : "United Nations Development Programme", category: "Global" },
     { name: "GEF", label: isHi ? "वैश्विक पर्यावरण सुविधा" : "Global Environment Facility", category: "Global" },
@@ -33,25 +53,22 @@ const PartnersPage = () => {
     { name: "MPPCB", label: isHi ? "म.प्र. प्रदूषण नियंत्रण बोर्ड" : "MP Pollution Control Board", category: "Government" },
   ];
 
-  // 🌿 EXACTLY 16 Green Partners (Hardcoded for easy editing)
-const greenPartners = [
-  { id: 1, name: "Partner 1", logo: "/partners/g1.jfif" },
-  { id: 2, name: "Partner 2", logo: "/partners/g.jfif" },
-  { id: 3, name: "Partner 3", logo: "/partners/gg.png" },
-  { id: 4, name: "Partner 4", logo: "/partners/g5.jfif" },
-  { id: 5, name: "Partner 5", logo: "/partners/g18.jfif" },
-  { id: 6, name: "Partner 6", logo: "/partners/g7.jfif" },
-  { id: 7, name: "Partner 7", logo: "/partners/g6.jfif" },
-  { id: 8, name: "Partner 8", logo: "/partners/g16.jfif" },
-
-  { id: 9, name: "Partner 9", logo: "/partners/g10.png" },
-  { id: 10, name: "Partner 10", logo: "/partners/g3.jfif" },
-  { id: 11, name: "Partner 11", logo: "/partners/g17.png" },
-  { id: 12, name: "Partner 12", logo: "/partners/g4.jfif" },
-  { id: 13, name: "Partner 13", logo: "/partners/g2.png" },
-  { id: 14, name: "Partner 14", logo: "/partners/g9.png" },
-
-];
+  const greenPartners = [
+    { id: 1, name: "Partner 1", logo: "/partners/g1.jfif" },
+    { id: 2, name: "Partner 2", logo: "/partners/g.jfif" },
+    { id: 3, name: "Partner 3", logo: "/partners/gg.png" },
+    { id: 4, name: "Partner 4", logo: "/partners/g5.jfif" },
+    { id: 5, name: "Partner 5", logo: "/partners/g18.jfif" },
+    { id: 6, name: "Partner 6", logo: "/partners/g7.jfif" },
+    { id: 7, name: "Partner 7", logo: "/partners/g6.jfif" },
+    { id: 8, name: "Partner 8", logo: "/partners/g16.jfif" },
+    { id: 9, name: "Partner 9", logo: "/partners/g10.png" },
+    { id: 10, name: "Partner 10", logo: "/partners/g3.jfif" },
+    { id: 11, name: "Partner 11", logo: "/partners/g17.png" },
+    { id: 12, name: "Partner 12", logo: "/partners/g4.jfif" },
+    { id: 13, name: "Partner 13", logo: "/partners/g2.png" },
+    { id: 14, name: "Partner 14", logo: "/partners/g9.png" },
+  ];
 
   const knowledgePartners = [
     { id: 1, name: "BSSS", role: "Knowledge Planning", img: "/partners/g8.jfif" },
@@ -63,7 +80,7 @@ const greenPartners = [
     <div className="bg-[#fcfcfb] min-h-screen pb-32 overflow-hidden selection:bg-[#FFBF00] selection:text-[#3e2723]">
       
       {/* 1. HERO HEADER */}
-      <section className="px-6 md:px-14 max-w-7xl mx-auto pt-44 pb-24">
+      <section className="px-6 md:px-14 max-w-7xl mx-auto pt-44 pb-12">
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-8">
             <motion.div initial="hidden" animate="visible" variants={fadeInUp} className="flex items-center gap-4 mb-8">
@@ -75,7 +92,7 @@ const greenPartners = [
             
             <motion.h1 
               initial="hidden" animate="visible" variants={fadeInUp}
-              className="text-6xl md:text-[8rem] font-[1000] text-[#3e2723] leading-[0.85] tracking-tighter uppercase italic"
+              className="text-5xl md:text-[7rem] font-[1000] text-[#3e2723] leading-[0.85] tracking-tighter uppercase italic"
             >
               {isHi ? "रणनीतिक" : "STRATEGIC"} <br />
               <span className="text-[#FFBF00] not-italic">{isHi ? "गठबंधन" : "ALLIANCES."}</span>
@@ -89,7 +106,53 @@ const greenPartners = [
         </div>
       </section>
 
-      {/* 2. STRATEGIC PARTNERS */}
+      {/* 2. PPCP MODEL & COLLABORATION (NEW SECTION) */}
+      <section className="px-6 md:px-14 max-w-7xl mx-auto mb-40">
+        <div className="bg-white border border-[#3e2723]/5 rounded-[3rem] p-8 md:p-16 shadow-sm">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <h2 className="text-3xl md:text-5xl font-[1000] text-[#3e2723] uppercase tracking-tighter italic leading-none mb-6">
+                {isHi ? "सरकार, उद्योग और संस्थानों के साथ काम करना" : "Working With Government, Industry & Institutions"}
+              </h2>
+              <p className="text-[#3e2723]/60 font-bold uppercase tracking-widest text-xs mb-10">
+                {isHi ? "हम विकेंद्रीकृत अपशिष्ट प्रबंधन को लागू करने के लिए संरचित सार्वजनिक-निजी-सामुदायिक भागीदारी (PPCP) मॉडल के माध्यम से काम करते हैं।" 
+                      : "We operate through structured Public-Private-Community Partnership (PPCP) models to implement decentralized waste management systems."}
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {collabItems.map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-3 p-4 bg-gray-50 rounded-2xl border border-gray-100 hover:border-[#FFBF00] transition-colors group">
+                    <span className="text-[#FFBF00] group-hover:scale-110 transition-transform">{item.icon}</span>
+                    <span className="text-[11px] font-black text-[#3e2723] uppercase tracking-tighter">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-[#3e2723] rounded-[2.5rem] p-10 text-white relative overflow-hidden">
+               <Users2 className="absolute -right-10 -top-10 text-white/5 w-64 h-64" />
+               <h3 className="text-2xl font-[1000] text-[#FFBF00] uppercase italic mb-8 relative z-10">
+                 {isHi ? "हमारी भूमिका" : "Our Role Includes"}
+               </h3>
+               <div className="grid gap-6 relative z-10">
+                 {roles.map((role, i) => (
+                   <div key={i} className="flex gap-4 items-start group">
+                     <div className="mt-1">
+                       <CheckCircle2 size={18} className="text-[#FFBF00]" />
+                     </div>
+                     <div>
+                       <h4 className="text-sm font-black uppercase tracking-widest mb-1 group-hover:text-[#FFBF00] transition-colors">{role.title}</h4>
+                       <p className="text-white/40 text-[10px] font-bold uppercase">{role.desc}</p>
+                     </div>
+                   </div>
+                 ))}
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. STRATEGIC PARTNERS (UNDP, BMC etc) */}
       <section className="px-6 md:px-14 max-w-7xl mx-auto mb-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {globalPartners.map((partner, i) => (
@@ -117,8 +180,7 @@ const greenPartners = [
         </div>
       </section>
 
-      {/* 3. GREEN PARTNERS (Exactly 16 Cards) */}
- {/* 3. GREEN PARTNERS (Exactly 16 Cards) */}
+      {/* 4. GREEN PARTNERS (Exactly 14 Cards) */}
       <section className="px-6 md:px-14 max-w-7xl mx-auto mb-40">
         <div className="flex items-center gap-4 mb-12 text-center md:text-left">
             <div className="p-2 bg-[#FFBF00]/10 rounded-lg">
@@ -129,29 +191,31 @@ const greenPartners = [
             </h2>
         </div>
 
-        {/* Grid fix: Mobile par 2 column, Tablet par 4, Laptop par 8 */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 md:gap-4">
           {greenPartners.map((partner) => (
             <motion.div
               key={partner.id}
               whileHover={{ y: -5, borderColor: "#FFBF00" }}
-              className="aspect-square bg-white border border-[#3e2723]/10 rounded-2xl md:rounded-3xl p-4 flex items-center justify-center group transition-all shadow-sm hover:shadow-xl hover:shadow-[#FFBF00]/10"
+              className="aspect-square bg-white border border-[#3e2723]/10 rounded-2xl md:rounded-3xl p-6 flex items-center justify-center group transition-all shadow-sm hover:shadow-xl hover:shadow-[#FFBF00]/10 overflow-hidden"
             >
-              <img 
-                src={partner.logo} 
-                className="w-full h-full object-contain transition-all duration-500 scale-90 group-hover:scale-100" 
-                alt={partner.name} 
-              
-              />
+              <div className="w-full h-full flex items-center justify-center">
+                <img 
+                  src={partner.logo} 
+                  className="max-w-full max-h-full object-contain transition-all duration-500 scale-100 group-hover:scale-110" 
+                  alt={partner.name} 
+                />
+              </div>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* 4. KNOWLEDGE PARTNERS (Exactly 3) */}
+      {/* 5. KNOWLEDGE PARTNERS */}
       <section className="px-6 md:px-14 max-w-7xl mx-auto mb-40">
         <div className="flex items-center gap-4 mb-12">
-            <GraduationCap className="text-[#FFBF00]" size={28} />
+            <div className="p-2 bg-[#FFBF00]/10 rounded-lg">
+              <GraduationCap className="text-[#FFBF00]" size={28} />
+            </div>
             <h2 className="text-3xl md:text-5xl font-[1000] text-[#3e2723] uppercase tracking-tighter italic">
                 {isHi ? "नॉलेज पार्टनर्स" : "KNOWLEDGE PARTNERS"}
             </h2>
@@ -164,8 +228,8 @@ const greenPartners = [
               className="bg-[#3e2723] text-white p-10 rounded-[3.5rem] relative overflow-hidden group shadow-2xl"
             >
               <div className="relative z-10">
-                <div className="w-20 h-20 bg-white rounded-2xl p-4 mb-8">
-                  <img src={kp.img} className="w-full h-full object-contain" alt={kp.name} />
+                <div className="w-20 h-20 bg-white rounded-2xl p-4 mb-8 flex items-center justify-center">
+                  <img src={kp.img} className="max-w-full max-h-full object-contain" alt={kp.name} />
                 </div>
                 <h4 className="text-3xl font-[1000] text-[#FFBF00] uppercase italic mb-2">{kp.name}</h4>
                 <p className="text-white/40 text-[10px] font-black uppercase tracking-widest">{kp.role}</p>
@@ -176,7 +240,7 @@ const greenPartners = [
         </div>
       </section>
 
-      {/* 5. TRUST AREA */}
+      {/* 6. TRUST AREA */}
       <section className="px-6 md:px-14 max-w-7xl mx-auto mb-40 overflow-hidden">
         <div className="bg-[#3e2723] rounded-[4rem] p-12 md:p-24 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/3 h-full bg-[#FFBF00]/5 -skew-x-12 translate-x-20" />
@@ -212,7 +276,7 @@ const greenPartners = [
         </div>
       </section>
 
-      {/* 6. CTA */}
+      {/* 7. CTA */}
       <section className="px-6 md:px-14 max-w-4xl mx-auto text-center pb-20">
         <Handshake size={64} className="mx-auto text-[#FFBF00] mb-8" />
         <h2 className="text-5xl md:text-7xl font-[1000] text-[#3e2723] uppercase tracking-tighter italic mb-8">

@@ -85,11 +85,11 @@ const Navbar = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) =
         href: "/behaviour-change",
         icon: <BrainCircuit size={18} />,
       },
-      {
-        label: isHi ? "नर्मदा पहल" : "Narmada Initiative",
-        href: "/narmada-initiative",
-        icon: <Droplets size={18} />,
-      },
+      // {
+      //   label: isHi ? "नर्मदा पहल" : "Narmada Initiative",
+      //   href: "/narmada-initiative",
+      //   icon: <Droplets size={18} />,
+      // },
     ],
 
     impact: [
