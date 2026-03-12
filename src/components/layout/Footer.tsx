@@ -89,7 +89,7 @@ const Footer: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
               <div className="space-y-4">
                 <div className="flex gap-4 items-start">
                   <MapPin size={18} className="text-[#FFBF00] shrink-0" />
-                  <span className="text-sm font-bold text-white/80 leading-tight italic">Bhopal, Madhya Pradesh - 462039, India</span>
+                  <span className="text-sm font-bold text-white/80 leading-tight italic">Sarthak Sanstha 3/8 Amir ganj Lower Idgah hill, Bhopal 462001</span>
                 </div>
                 <div className="flex gap-4 items-center">
                   <Mail size={18} className="text-[#FFBF00] shrink-0" />
@@ -98,6 +98,7 @@ const Footer: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
                 <div className="flex gap-4 items-center">
                   <Phone size={18} className="text-[#FFBF00] shrink-0" />
                   <span className="text-sm font-bold text-white/80 italic">+91 9826325798</span>
+                   <span className="text-sm font-bold text-white/80 italic">0755-2542004</span>
                 </div>
               </div>
             </div>

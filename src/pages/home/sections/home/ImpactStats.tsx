@@ -8,12 +8,12 @@ const ImpactStats: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
 
   const stats = [
     {
-      value: "19,000+",
+      value: "1,82,000+",
       label: isHi ? "सार्थक कर्मी सशक्त" : "Sarthak Karmis Uplifted",
       desc: isHi ? "कचरा बीनने वालों का उत्थान" : "Informal waste workers' dignity"
     },
     {
-      value: "40,000+",
+      value: "27,000+",
       unit: "KM",
       label: isHi ? "प्लास्टिक की सड़कें" : "Plastic Waste Roads",
       desc: isHi ? "सुरक्षित प्लास्टिक निपटान" : "Built using shredded MLP"
@@ -25,9 +25,9 @@ const ImpactStats: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
       desc: isHi ? "सालाना सुरक्षित रीसाइक्लिंग" : "Processed annually safely"
     },
     {
-      value: "24+",
+      value: "12+",
       label: isHi ? "नगर निगम मॉडल" : "Municipal Models",
-      desc: isHi ? "प्रतिकृति और प्रभाव" : "Replicating Sarthak's PPP"
+      desc: isHi ? "प्रतिकृति और प्रभाव" : "Integrated waste management models"
     }
   ];
 

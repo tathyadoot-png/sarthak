@@ -8,6 +8,7 @@ import {
   Zap,
   BarChart3,
   Building2,
+  Leaf,
   Users2,
   Download
 } from "lucide-react";
@@ -27,7 +28,7 @@ const AboutSection: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
 
   return (
     <section className=" py-20 md:py-32 bg-[#f7f7f6] text-[#3e2723] relative overflow-hidden">
-      
+
       {/* Subtle Background Accents */}
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/5 to-transparent pointer-events-none" />
       <div className="absolute -right-20 top-40 w-96 h-96 bg-[#FFBF00]/10 blur-[100px] rounded-full pointer-events-none" />
@@ -37,9 +38,9 @@ const AboutSection: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
 
           {/* --- LEFT: BRAND STORY --- */}
           <motion.div
-            variants={containerVars} 
-            initial="hidden" 
-            whileInView="visible" 
+            variants={containerVars}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             className="lg:col-span-6 space-y-10"
           >
@@ -50,7 +51,7 @@ const AboutSection: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
                   {isHi ? "1998 से निरंतर प्रभाव" : "Established 1998"}
                 </span>
               </div>
-              
+
               <h2 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tighter text-[#3e2723]">
                 {isHi ? "सार्थक:" : "Sarthak:"} <br />
                 <span className="opacity-30">
@@ -86,7 +87,7 @@ const AboutSection: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
 
           {/* --- RIGHT: THE BLUEPRINT --- */}
           <div className="lg:col-span-6">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
@@ -103,9 +104,30 @@ const AboutSection: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
 
                 <div className="space-y-10">
                   {[
-                    { phase: "01", icon: <Users2 size={22} />, title: isHi ? "सामाजिक उत्थान" : "Social Dignity", text: isHi ? "कचरा बीनने वालों का सामाजिक और वित्तीय उत्थान।" : "Livelihood transformation for Rag Pickers." },
-                    { phase: "02", icon: <Building2 size={22} />, title: isHi ? "औद्योगिक प्रसंस्करण" : "Industrial Scale", text: isHi ? "औद्योगिक स्तर पर प्लास्टिक कचरे का प्रसंस्करण।" : "Industrial-grade Plastic Waste Processing." },
-                    { phase: "03", icon: <BarChart3 size={22} />, title: isHi ? "राजस्व मॉडल" : "Revenue Growth", text: isHi ? "सीमेंट फैक्ट्रियों को कच्चे माल की आपूर्ति और राजस्व।" : "Revenue generation via Cement Factory Supply." }
+                    {
+                      phase: "01",
+                      icon: <Users2 size={22} />,
+                      title: isHi ? "सामाजिक प्रभाव" : "Social Impact",
+                      text: isHi
+                        ? "कचरा बीनने वालों के जीवन में सामाजिक और आर्थिक सुधार।"
+                        : "Improving dignity, livelihood and financial stability of Rag Pickers."
+                    },
+                    {
+                      phase: "02",
+                      icon: <Leaf size={22} />,
+                      title: isHi ? "पर्यावरणीय प्रभाव" : "Environmental Impact",
+                      text: isHi
+                        ? "प्लास्टिक कचरे का सुरक्षित प्रसंस्करण और पर्यावरण संरक्षण।"
+                        : "Reducing plastic pollution through responsible waste processing."
+                    },
+                    {
+                      phase: "03",
+                      icon: <BarChart3 size={22} />,
+                      title: isHi ? "आर्थिक प्रभाव" : "Economic Impact",
+                      text: isHi
+                        ? "औद्योगिक उपयोग से राजस्व सृजन और टिकाऊ आर्थिक मॉडल।"
+                        : "Revenue generation through industrial use and circular economy."
+                    }
                   ].map((item, idx) => (
                     <div key={idx} className="flex gap-6 group">
                       <div className="flex flex-col items-center">
@@ -134,11 +156,14 @@ const AboutSection: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
                       {isHi ? "पर्यावरण संरक्षण और स्वास्थ्य क्षेत्र के विशेषज्ञ स्टाफ" : "Specialized Env Protection & Health Staff"}
                     </p>
                   </div>
-                  
-                  <button className="group flex items-center gap-3 bg-[#3e2723] text-white px-8 py-4 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#FFBF00] hover:text-[#3e2723] transition-all shadow-lg shadow-[#3e2723]/10">
+                  <a
+                    href="/docs/sarthak-profile.pdf"
+                     download="sarthak-profile.pdf"
+                    className="group flex items-center gap-3 bg-[#3e2723] text-white px-8 py-4 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#FFBF00] hover:text-[#3e2723] transition-all shadow-lg shadow-[#3e2723]/10"
+                  >
                     {isHi ? "प्रोफाइल डाउनलोड करें" : "Download Profile"}
                     <Download size={16} className="group-hover:translate-y-1 transition-transform" />
-                  </button>
+                  </a>
                 </div>
               </div>
             </motion.div>

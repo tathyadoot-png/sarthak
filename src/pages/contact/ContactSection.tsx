@@ -23,13 +23,13 @@ const ContactSection = () => {
     {
       icon: <MapPin size={20} />,
       title: isHi ? "हमारा पता" : "POSTAL ADDRESS",
-      details: "F3, Jyoti Apartment, Plot No 483, B sector, Sarvadharma, Kolar Road, Bhopal, MP 462042",
+      details: "Sarthak Sanstha 3/8 Amir ganj Lower Idgah hill, Bhopal 462001",
       link: "https://maps.google.com"
     },
     {
       icon: <Phone size={20} />,
       title: isHi ? "संपर्क नंबर" : "CONTACT NO",
-      details: "+91 98263 25798",
+      details: "+91 98263 25798 ,   0755-2542004",
       link: "tel:+919826325798"
     },
     {
@@ -96,7 +96,7 @@ const ContactSection = () => {
                   </div>
                   <div className="flex-1">
                     <h4 className="font-black text-[#3e2723]/40 text-[9px] uppercase tracking-[0.3em] mb-2 italic">{info.title}</h4>
-                    <p className="text-[#3e2723] font-[1000] leading-tight text-lg uppercase italic tracking-tighter">{info.details}</p>
+                    <p className="text-[#3e2723] font-[1000] leading-tight text-lg italic tracking-tighter">{info.details}</p>
                     {info.subDetails && <p className="text-[#FFBF00] text-[10px] mt-2 font-black uppercase tracking-widest">{info.subDetails}</p>}
                   </div>
                   <ArrowUpRight className="text-[#3e2723]/10 group-hover:text-[#FFBF00] transition-colors" size={24} />

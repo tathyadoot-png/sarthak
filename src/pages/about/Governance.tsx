@@ -174,7 +174,7 @@ const Governance = () => {
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {["80G Registered", "12A Certified", "CSR-1 Registered", "FCRA Compliant"].map((cert, i) => (
+                {["80G Registered", "12A Certified", "CSR-1 Registered", "MPPCB Certification"].map((cert, i) => (
                   <div key={i} className="flex items-center gap-4 p-6 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm group hover:bg-[#FFBF00]/10 transition-colors">
                     <CheckCircle2 className="text-[#FFBF00] shrink-0" size={24} />
                     <span className="text-[12px] font-black uppercase tracking-tighter text-white/90">{cert}</span>
