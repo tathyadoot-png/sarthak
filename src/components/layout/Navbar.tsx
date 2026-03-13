@@ -204,7 +204,7 @@ const Navbar = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) =
 
           <Link
             to="/partner"
-            className="bg-[#FFBF00] text-[#3e2723] px-6 py-2.5 rounded-full text-[12px] font-black uppercase tracking-widest hover:bg-[#1c1716] hover:text-white transition-all"
+            className="hidden md:block bg-[#FFBF00] text-[#3e2723] px-6 py-2.5 rounded-full text-[12px] font-black uppercase tracking-widest hover:bg-[#1c1716] hover:text-white transition-all"
           >
             {navLabels.join}
           </Link>

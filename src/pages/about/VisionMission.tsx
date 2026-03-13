@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from "framer-motion";
-import { Target, Eye, ArrowUpRight } from "lucide-react";
+import { Target, Eye, ArrowUpRight, Quote } from "lucide-react";
 import { useOutletContext } from "react-router-dom";
 
 const VisionMission = () => {
@@ -11,7 +11,9 @@ const VisionMission = () => {
 
   return (
     <section className="w-full">
-      {/* 🔹 Heading Section - Updated to Match Theme */}
+   
+
+      {/* 🔹 Heading Section */}
       <div className="mb-16">
         <h6 className="text-[#FFBF00] text-[10px] font-black uppercase tracking-[0.4em] mb-4">
           {isHi ? "हमारा संकल्प" : "OUR COMMITMENT"}
@@ -24,14 +26,13 @@ const VisionMission = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 w-full">
         
-        {/* 🔹 MISSION CARD (The Clean White/Yellow Look) */}
+        {/* 🔹 MISSION CARD */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="relative group p-8 md:p-12 lg:p-16 rounded-[2.5rem] md:rounded-[4rem] bg-white border border-[#3e2723]/5 hover:border-[#FFBF00]/30 transition-all duration-700 overflow-hidden shadow-sm hover:shadow-[0_40px_80px_-20px_rgba(62,39,35,0.08)]"
         >
-          {/* Decorative Gradient Blob */}
           <div className="absolute top-0 right-0 w-48 h-48 bg-[#FFBF00]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-1000" />
           
           <div className="relative z-10 space-y-6 md:space-y-10">
@@ -44,18 +45,18 @@ const VisionMission = () => {
 
             <div className="space-y-4">
               <h4 className="text-2xl md:text-4xl font-[1000] text-[#3e2723] tracking-tighter uppercase italic">
-                {isHi ? "हमारा मिशन" : "Our Mission"}
+                {isHi ? "मिशन" : "Mission"}
               </h4>
-              <p className="text-[#3e2723]/70 text-base md:text-xl leading-relaxed font-bold max-w-[95%]">
+              <p className="text-[#3e2723]/70 text-base md:text-lg leading-relaxed font-bold">
                 {isHi 
-                  ? "नगर निगमों और समुदायों के साथ मिलकर ठोस अपशिष्ट प्रबंधन के लिए एक आत्मनिर्भर और टिकाऊ बिजनेस मॉडल तैयार करना।" 
-                  : "To create a self-sustainable business model in solid waste management by partnering with municipal bodies and heavy industries."}
+                  ? "सार्थक संस्था का मिशन कचरा प्रबंधन के क्षेत्र में नए-नए नवाचारों को बढ़ावा देना, कम लागत वाली तकनीकों का विकास और प्रसार करना तथा इस विषय में अनुसंधान को प्रोत्साहित करना है। संस्था कचरा बीनने वाले समुदाय को संगठित कर उन्हें रोजगार के अवसर प्रदान करने, पर्यावरण संरक्षण के लिए जनजागरूकता बढ़ाने और सरकार तथा स्थानीय निकायों के साथ मिलकर वैज्ञानिक कचरा प्रबंधन की प्रभावी व्यवस्था स्थापित करने के लिए कार्यरत है।" 
+                  : "To champion innovations in waste management by developing and disseminating low-cost technologies while fostering rigorous research. We are dedicated to organizing the waste-picking community for sustainable livelihoods and collaborating with authorities to establish scientific waste systems."}
               </p>
             </div>
           </div>
         </motion.div>
 
-        {/* 🔹 VISION CARD (The Dark Brown Premium Look) */}
+        {/* 🔹 VISION CARD */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +64,6 @@ const VisionMission = () => {
           transition={{ delay: 0.1 }}
           className="relative group p-8 md:p-12 lg:p-16 rounded-[2.5rem] md:rounded-[4rem] bg-[#3e2723] text-white overflow-hidden shadow-2xl transition-all duration-700 hover:-translate-y-2"
         >
-          {/* Mesh Gradient Background */}
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FFBF00]/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 group-hover:bg-[#FFBF00]/20 transition-colors duration-1000" />
           
           <div className="relative z-10 space-y-6 md:space-y-10">
@@ -76,20 +76,13 @@ const VisionMission = () => {
 
             <div className="space-y-4">
               <h4 className="text-2xl md:text-4xl font-[1000] text-white tracking-tighter uppercase italic">
-                {isHi ? "हमारा विजन" : "Our Vision"}
+                {isHi ? "विजन" : "Vision"}
               </h4>
-              <p className="text-white/70 text-base md:text-xl leading-relaxed font-bold max-w-[95%]">
+              <p className="text-white/70 text-base md:text-lg leading-relaxed font-bold">
                 {isHi 
-                  ? "एक ऐसा समाज जहाँ कचरा बीनने वालों को 'सार्थक कर्मी' के रूप में सम्मान मिले और हर अपशिष्ट संसाधन को पुनर्चक्रित किया जाए।" 
-                  : "To see every rag-picker transformed into a 'Sarthak Karmi'—a dignified worker with social security and professional status."}
+                  ? "सार्थक संस्था का विजन कचरा प्रबंधन के क्षेत्र में नवाचार (Innovation), अनुसंधान (Research) और कम लागत वाली तकनीकों के माध्यम से एक स्वच्छ, टिकाऊ और पर्यावरण अनुकूल व्यवस्था विकसित करना है। संस्था का उद्देश्य कचरे से होने वाले पर्यावरणीय और जलवायु संबंधी प्रभावों को कम करते हुए समाज के कमजोर वर्गों को सम्मानजनक आजीविका प्रदान करना और सरकार के साथ सहयोगात्मक भूमिका निभाते हुए सतत विकास को बढ़ावा देना है।" 
+                  : "To evolve a clean, sustainable, and eco-friendly ecosystem through innovation and cost-effective technologies. We aim to mitigate climate impacts while ensuring dignified livelihoods for vulnerable communities through collaborative partnerships for sustainable development."}
               </p>
-            </div>
-
-            {/* Subtle Tag for Vision */}
-            <div className="pt-2">
-               <span className="inline-block px-4 py-1 rounded-full border border-white/10 text-[10px] font-black uppercase tracking-widest text-white/40 group-hover:border-[#FFBF00] group-hover:text-[#FFBF00] transition-colors">
-                 Social Transformation
-               </span>
             </div>
           </div>
         </motion.div>

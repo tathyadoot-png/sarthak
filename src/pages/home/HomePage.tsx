@@ -17,6 +17,7 @@ import BhopalModel from "./sections/home/BhopalModel";
 import GlobalReach from "./sections/home/GlobalReach";
 import FinalCTA from "./sections/home/FinalCTA";
 import Initiatives from "./sections/home/Initiatives";
+import MediaGallery from "../gallery/MediaGallery";
 
 const HomePage = () => {
   const { lang } = useOutletContext<{ lang: Lang }>();
@@ -29,7 +30,8 @@ const HomePage = () => {
       <AboutSection lang={lang} />
       <Initiatives lang={lang} />
       <GlobalReach lang={lang} />
-      <FinalCTA lang={lang} />
+      {/* <FinalCTA lang={lang} /> */}
+      <MediaGallery isHi={lang === "hi"} />
       {/* <FocusAndImpact lang={lang} />
       <BhopalModel  lang={lang}/>
       <Partners  lang={lang} />

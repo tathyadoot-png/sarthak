@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from "framer-motion";
-import { Award, Building2, Globe, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { Award, Building2, Globe, ArrowRight, CheckCircle2, Sparkles,Quote } from "lucide-react";
 import { useOutletContext } from "react-router-dom";
 import VisionMission from './VisionMission';
 import HistorySection from './HistorySection';
@@ -19,7 +19,7 @@ const About = () => {
             <div className="max-w-7xl mx-auto px-6 md:px-12">
 
                 {/* --- HERO SECTION --- */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center mb-40">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center mb-20">
                     
                     {/* LEFT Side: Visuals with Sarthak Brand Layers */}
                     <div className="lg:col-span-5 relative group">
@@ -121,12 +121,33 @@ const About = () => {
                             </button>
                         </div>
                     </div>
+
+                    
                 </div>
 
-                {/* --- SECTION DIVIDER --- */}
-                <div className="relative w-full h-px bg-[#3e2723]/10 my-32">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FFBF00]/40 to-transparent" />
-                </div>
+                   
+                      {/* 🔹 NANJI DESHMUKH QUOTE SECTION */}
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mb-20 p-8 bg-[#FFBF00]/5 border-l-4 border-[#FFBF00] rounded-r-[2rem] relative overflow-hidden"
+                      >
+                        <Quote className="absolute top-4 right-8 text-[#FFBF00]/10 w-24 h-24" />
+                        <div className="relative z-10">
+                          <p className="text-xl md:text-3xl font-black text-[#3e2723] leading-tight mb-6 italic">
+                            "मैं अपने लिए नहीं, अपनों के लिए हूँ। अपने वे हैं, जो सदियों से पीड़ित एवं उपेक्षित हैं।"
+                          </p>
+                          <div className="flex items-center gap-4">
+                            <div className="h-[1px] w-12 bg-[#3e2723]/20" />
+                            <p className="text-[#3e2723] font-black uppercase tracking-widest text-sm">
+                              — राष्ट्रऋषि नानाजी देशमुख
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
+
+           
 
                 {/* --- SUB-SECTIONS WRAPPER --- */}
                 <div className="space-y-40 md:space-y-60">
