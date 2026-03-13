@@ -26,7 +26,7 @@ import OrganicWastePage from "@/pages/whatwedo/OrganicWastePage";
 import EWastePage from "@/pages/whatwedo/EWastePage";
 import WasteToWealthPage from "@/pages/whatwedo/WasteToWealthPage";
 import BhopalModelPage from "@/pages/whatwedo/BhopalModelPage";
-import ZeroWasteCampusPage from "@/pages/whatwedo/ZeroWasteCampusPage";
+import ZeroWasteCampusPage from "@/pages/initiatives/ZeroWasteCampusPage";
 import BehaviourChangePage from "@/pages/whatwedo/BehaviourChangePage";
 import Partners from "@/pages/home/sections/Partners/Partners";
 import AchievementsPage from "@/pages/whatwedo/AchievementsPage";
