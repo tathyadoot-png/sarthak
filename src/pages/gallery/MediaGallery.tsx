@@ -28,8 +28,10 @@ const mediaLinks: MediaLink[] = [
   { id: 'yt3', type: 'video', videoId: 'ixlOUO8OiHM', title: 'Bhopal Model: Plastic Waste Excellence', platform: 'YouTube', desc: 'The revolutionary model recognized globally.' },
   { id: 'yt4', type: 'video', videoId: 'FdXij9rVC3k', title: 'Imteyaz Ali: The Visionary Interview', platform: 'YouTube', desc: 'Understanding the core mission of Sarthak NGO.' },
   { id: 'yt5', type: 'video', videoId: 'rhNpqsMs2aw', title: 'GGF Visit - Recycling Plant', platform: 'YouTube', desc: 'Global Green Foundation visiting Sarthak facilities.' },
-  { id: 'fb1', type: 'social', url: 'https://www.facebook.com/share/v/1CLzKE8FPu/', title: 'Sarthak Impact Video', platform: 'Facebook', desc: 'Direct updates from our field operations.' },
-  { id: 'fb2', type: 'social', url: 'https://www.facebook.com/share/p/1Atm4UcMux/', title: 'Community Outreach', platform: 'Facebook', desc: 'Joining hands with the local community.' },
+  { id: 'yt7', type: 'video', videoId: 'gAFxw_-y7ug', title: 'Sarthak Impact Shorts', platform: 'YouTube', desc: 'Quick highlights of our sustainable waste management operations.' },
+  { id: 'fb1', type: 'social', url: 'https://www.facebook.com/watch/?v=141575708934360', title: 'Sarthak Impact Video', platform: 'Facebook', desc: 'Direct updates from our field operations.' },
+  { id: 'fb2', type: 'social', url: 'https://www.facebook.com/watch/?v=583609572026129', title: 'Community Outreach', platform: 'Facebook', desc: 'Joining hands with the local community.' },
+  { id: 'fb3', type: 'social', url: 'https://www.facebook.com/share/p/1HW1kVfq39/', title: 'Latest Sarthak Updates', platform: 'Facebook', desc: 'Check out our latest post on community engagement.' },
 ];
 
 interface MediaCenterProps {
@@ -41,14 +43,11 @@ const MediaCenter: React.FC<MediaCenterProps> = ({ isHi }) => {
 
   return (
     <section className="py-12 md:py-24 max-w-7xl mx-auto bg-white text-[#3e2723] overflow-hidden relative">
-      {/* Background Large Text Overlay */}
       <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] md:opacity-[0.03] pointer-events-none select-none overflow-hidden flex items-center justify-center">
         <h1 className="text-[30vw] md:text-[20vw] font-black uppercase italic leading-none text-[#3e2723]">SARTHAK</h1>
       </div>
 
       <div className="px-6 relative z-10">
-        
-        {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16 gap-6">
           <div className="max-w-xl">
             <div className="flex items-center gap-3 mb-4 md:mb-6">
@@ -65,7 +64,6 @@ const MediaCenter: React.FC<MediaCenterProps> = ({ isHi }) => {
             </h2>
           </div>
           
-          {/* Nav Buttons - Hidden on Mobile */}
           <div className="hidden md:flex gap-4 mb-4">
             <button className="nav-prev w-14 h-14 rounded-xl border border-[#3e2723]/10 flex items-center justify-center hover:bg-[#FFBF00] hover:text-white transition-all cursor-pointer bg-white shadow-sm group">
               <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
@@ -76,7 +74,6 @@ const MediaCenter: React.FC<MediaCenterProps> = ({ isHi }) => {
           </div>
         </div>
 
-        {/* Swiper Slider Container */}
         <div className="[&_.swiper-pagination-bullet]:bg-[#3e2723]/20 [&_.swiper-pagination-bullet]:w-6 md:[&_.swiper-pagination-bullet]:w-8 [&_.swiper-pagination-bullet]:h-[2px] [&_.swiper-pagination-bullet]:rounded-none [&_.swiper-pagination-bullet]:transition-all [&_.swiper-pagination-bullet-active]:bg-[#FFBF00] [&_.swiper-pagination-bullet-active]:w-10 md:[&_.swiper-pagination-bullet-active]:w-16">
           <Swiper
             modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
@@ -100,10 +97,7 @@ const MediaCenter: React.FC<MediaCenterProps> = ({ isHi }) => {
               prevEl: '.nav-prev',
               nextEl: '.nav-next',
             }}
-            pagination={{ 
-              clickable: true,
-              dynamicBullets: true
-            }}
+            pagination={{ clickable: true, dynamicBullets: true }}
             breakpoints={{
               320: { slidesPerView: 1.2, spaceBetween: 20 },
               768: { slidesPerView: 'auto', spaceBetween: 30 }
@@ -113,7 +107,6 @@ const MediaCenter: React.FC<MediaCenterProps> = ({ isHi }) => {
             {mediaLinks.map((item) => (
               <SwiperSlide key={item.id} className="!w-[280px] md:!w-[520px] py-10">
                 <div className="group bg-white rounded-[2rem] md:rounded-[2.5rem] p-3 md:p-4 border border-[#3e2723]/5 shadow-xl hover:shadow-2xl hover:border-[#FFBF00]/30 transition-all duration-700 h-full flex flex-col">
-                  
                   <div className="relative aspect-video rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-lg bg-[#3e2723]/5">
                     {item.type === 'video' ? (
                       <>
@@ -142,21 +135,11 @@ const MediaCenter: React.FC<MediaCenterProps> = ({ isHi }) => {
                         </a>
                       </div>
                     )}
-
                     <div className="absolute top-3 left-3 md:top-4 md:left-4 bg-white/90 backdrop-blur-md px-2 md:px-3 py-1 md:py-1.5 rounded-lg md:rounded-xl border border-[#3e2723]/5 shadow-sm flex items-center gap-2">
                       {item.platform === 'YouTube' ? <Youtube size={10} className="text-red-500" /> : <Facebook size={10} className="text-[#1877F2]" />}
                       <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-wider text-[#3e2723]">{item.platform}</span>
                     </div>
                   </div>
-
-                  {/* <div className="p-4 md:p-6">
-                    <h3 className="text-lg md:text-2xl font-black uppercase italic leading-[1.1] mb-2 md:mb-3 text-[#3e2723] group-hover:text-[#FFBF00] transition-colors duration-500 line-clamp-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-[#3e2723]/60 text-[10px] md:text-xs font-medium italic line-clamp-2 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div> */}
                 </div>
               </SwiperSlide>
             ))}
@@ -164,7 +147,6 @@ const MediaCenter: React.FC<MediaCenterProps> = ({ isHi }) => {
         </div>
       </div>
 
-      {/* Video Modal - Responsive Adjustments */}
       <AnimatePresence>
         {activeVideo && (
           <motion.div 
@@ -173,11 +155,10 @@ const MediaCenter: React.FC<MediaCenterProps> = ({ isHi }) => {
           >
             <button 
               onClick={() => setActiveVideo(null)}
-              className="absolute top-4 right-4 md:top-8 md:right-8 w-10 h-10 md:w-14 md:h-14 bg-[#3e2723] text-white rounded-xl flex items-center justify-center hover:bg-[#FFBF00] transition-all z-[110] shadow-lg"
+              className="absolute top-20 right-4 md:top-20 md:right-14 w-10 h-10 md:w-14 md:h-14 bg-[#3e2723] text-white rounded-xl flex items-center justify-center hover:bg-[#FFBF00] transition-all z-[110] shadow-lg"
             >
               <X size={20} strokeWidth={3} />
             </button>
-            
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
