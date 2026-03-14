@@ -3,8 +3,12 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import { Users, Leaf, Banknote, ArrowUpRight, Globe2 } from "lucide-react";
+// 1. useOutletContext ko import karein
+import { useOutletContext } from "react-router-dom";
 
-const Impact: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
+const Impact: React.FC = () => {
+  // 2. Context se lang nikalne ke liye hook use karein
+  const { lang } = useOutletContext<{ lang: "hi" | "en" }>();
   const isHi = lang === "hi";
 
   const impacts = [
@@ -153,7 +157,6 @@ const Impact: React.FC<{ lang: "hi" | "en" }> = ({ lang }) => {
         </div>
       </div>
 
-      {/* Custom Styles for Stroke Text */}
       <style jsx>{`
         .stroke-text {
           -webkit-text-stroke: 1px #3e2723;
