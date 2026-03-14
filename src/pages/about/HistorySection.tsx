@@ -22,28 +22,28 @@ const HistorySection = () => {
       year: "1998",
       title: isHi ? "पंजीकरण एवं नींव" : "Foundation",
       desc: isHi ? "भोपाल में एक NGO के रूप में शुरुआत, पर्यावरण और कचरा प्रबंधन के प्रति अटूट संकल्प।" : "Registered as an NGO in Bhopal, embarking on a mission for environmental care.",
-      img: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=800",
+      img: "/plasticwaste/11.jpg",
       icon: <Calendar size={24} />
     },
     {
       year: "2010",
       title: "UNDP Milestone",
       desc: isHi ? "SGP-UNDP के साथ ऐतिहासिक साझेदारी, प्लास्टिक कचरे को आजीविका में बदलने का सफल मॉडल।" : "Strategic partnership with SGP-UNDP, creating livelihoods from plastic waste.",
-      img: "https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?q=80&w=800",
+      img: "/undp/1.jpg",
       icon: <HistoryIcon size={24} />
     },
     {
       year: "2013",
       title: isHi ? "औद्योगिक क्रांति" : "Industrial Linkage",
       desc: isHi ? "सीमेंट फैक्ट्रियों को RDF सप्लाई की शुरुआत, कचरा प्रबंधन में औद्योगिक स्तर का योगदान।" : "Pioneered RDF supply to cement industries, scaling waste solutions for the future.",
-      img: "https://images.unsplash.com/photo-1536412597336-ade7b523ecbc?q=80&w=800",
+      img: "plasticwaste/3.jpg",
       icon: <ArrowRight size={24} />
     },
     {
       year: "Today",
       title: isHi ? "विशाल परिवार" : "The Legacy",
       desc: isHi ? "3200+ सार्थक कर्मियों के साथ पूरे प्रदेश में विकास और स्वच्छता की नई इबारत।" : "Empowering 3200+ workers and leading large-scale waste management across MP.",
-      img: "https://images.unsplash.com/photo-1530587191325-3db32d826c18?q=80&w=800",
+      img: "/img/66.jpeg",
       icon: <Sparkles size={24} />
     },
   ];

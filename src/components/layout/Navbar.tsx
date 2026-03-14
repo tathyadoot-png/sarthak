@@ -25,6 +25,7 @@ import {
   Users2,
   Presentation,
   X,
+  Book
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -77,6 +78,7 @@ const Navbar = ({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) =
         { label: isHi ? "अध्ययन यात्रा" : "Study Tour", href: "/study-tour", icon: <Compass size={16} /> },
         { label: isHi ? "सामुदायिक कार्यक्रम" : "Community Program", href: "/community-programme", icon: <Users2 size={16} /> },
         { label: isHi ? "प्रशिक्षण" : "Training & Capacity", href: "/training", icon: <Presentation size={16} /> },
+        { label: isHi ? "प्रकाशन" : "Publications", href: "/publications", icon: <Book size={16} /> },
       ]
     },
     trust: {

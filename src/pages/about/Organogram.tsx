@@ -15,7 +15,7 @@ const Organogram = () => {
     director: {
       title: isHi ? "प्रोजेक्ट डायरेक्टर" : "PROJECT DIRECTOR",
       name: "Imtiyaz Ali",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&auto=format&fit=crop"
+      image: "/img/20.jpeg"
     },
     manager: isHi ? "प्रोग्राम मैनेजर" : "PROGRAM MANAGER",
     officer: isHi ? "अनुसंधान एवं प्रलेखन अधिकारी" : "RESEARCH & DOCUMENTATION",

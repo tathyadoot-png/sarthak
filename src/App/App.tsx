@@ -34,6 +34,7 @@ import InternshipPage from "@/pages/whatwedo/InternshipPage";
 import StudyTour from "@/pages/whatwedo/StudyTour";
 import CommunityProgramme from "@/pages/whatwedo/CommunityProgramme";
 import TrainingPage from "@/pages/whatwedo/TrainingPage";
+import Publications from "@/pages/whatwedo/Publications";
 
 
 const App = () => {
@@ -73,10 +74,7 @@ const App = () => {
           <Route path="/training" element={<TrainingPage />} />
           <Route path="/paper" element={<PaperWaste />} />
           <Route path="/compliance" element={<AchievementsPage />} />
-
-
-
-
+          <Route path="/publications" element={<Publications />} />
 
         </Route>
 
